@@ -1,0 +1,31 @@
+*{
+    top: 0px;
+    left: 0px;
+    width: 1366px;
+    height: 767px;
+    background: #FDEEC9 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+
+
+.text {
+    display: inline;
+    align-items: center;
+}
+
+p{
+    width: 506px;
+    text-align: center;
+}
+
+h1{
+    width: 441px;
+    height: 72px;
+    text-align: center;
+    font: Bold 68px/60px Chauncy Pro;
+    letter-spacing: 0px;
+    color: #F27253;
+    opacity: 1;
+
+}
