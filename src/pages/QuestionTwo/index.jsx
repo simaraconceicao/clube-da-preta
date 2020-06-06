@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -6,7 +6,6 @@ import Header from "../../components/Header";
 import { useHistory } from "react-router-dom";
 import Title from "../../components/Questions/Title";
 import BtnAnswer from "../../components/Questions/BtnAnswer";
-import { QuestionsContext } from "../../contexts/Questions";
 
 const useStyles = makeStyles((theme) => ({
   questions: {
@@ -19,12 +18,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function QuestionOne() {
+export default function QuestionTwo() {
   const classes = useStyles();
-  const { addAnsweradOne } = useContext(QuestionsContext);
   const history = useHistory();
 
-  const setAnswerd = (e) => {
+  const setAnswerd = () => {
     history.push("/pergunta-2");
   };
   return (
@@ -32,8 +30,8 @@ export default function QuestionOne() {
       <Header />
       <Grid item>
         <Title title="Primeira Pergunta?" />
-        <BtnAnswer title="Resposta1" answerd={setAnswerd} />
-        <BtnAnswer title="Resposta2" answerd={setAnswerd} />
+        <BtnAnswer title="Resposta1" answerd={() => setAnswerd} />
+        <BtnAnswer title="Resposta2" />
       </Grid>
     </Grid>
   );

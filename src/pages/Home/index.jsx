@@ -1,12 +1,12 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
 import InputBase from "@material-ui/core/InputBase";
-
 import Button from "@material-ui/core/Button";
 import Header from "../../components/Header";
 import { QuestionsContext } from "../../contexts/Questions";
+import { useHistory } from "react-router-dom";
+
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -69,11 +69,10 @@ const BootstrapInput = withStyles((theme) => ({
 export default function Home() {
   const [isError, setIsError] = useState(false);
   const [isValid, setIsValid] = useState(false);
-
   const [messageError, setmessageError] = useState("");
-
   const classes = useStyles();
   const { addEmail } = useContext(QuestionsContext);
+  const history = useHistory();
 
   const setEmail = (e) => {
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -91,6 +90,7 @@ export default function Home() {
 
   const goToQuestion = () => {
     if (isValid) {
+      history.push("/pergunta-1");
     } else {
       setmessageError("Email vazio ou inválido!");
       setIsError(true);
