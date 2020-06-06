@@ -8,6 +8,8 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   title: {
     color: "#fff",
+    fontSize: 24,
+    letterSpacing: 4,
   },
 }));
 
