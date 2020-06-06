@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -6,6 +6,7 @@ import InputBase from "@material-ui/core/InputBase";
 
 import Button from "@material-ui/core/Button";
 import Header from "../../components/Header";
+import { QuestionsContext } from "../../contexts/Questions";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,6 +34,14 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#f27250",
     },
   },
+  spanError: {
+    color: "red",
+    fontSize: 14,
+    textAlign: "left",
+    marginBottom: 6,
+    display: "block",
+    width: "100%",
+  },
 }));
 
 const BootstrapInput = withStyles((theme) => ({
@@ -41,15 +50,16 @@ const BootstrapInput = withStyles((theme) => ({
     position: "relative",
     backgroundColor: theme.palette.common.white,
     border: "1px solid #f27253",
+    color: "#f27253",
     fontSize: 16,
     width: "100%",
     height: "30px",
     padding: "10px 12px",
-    marginBottom: 6,
+    marginBottom: 2,
     "&:hover": {
       backgroundColor: "#fff",
     },
-    "&$focused": {
+    "&focused": {
       backgroundColor: "#fff",
       borderColor: "f27253",
     },
@@ -57,7 +67,36 @@ const BootstrapInput = withStyles((theme) => ({
 }))(InputBase);
 
 export default function Home() {
+  const [isError, setIsError] = useState(false);
+  const [isValid, setIsValid] = useState(false);
+
+  const [messageError, setmessageError] = useState("");
+
   const classes = useStyles();
+  const { addEmail } = useContext(QuestionsContext);
+
+  const setEmail = (e) => {
+    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    console.log(regex.test(e.target.value));
+    if (regex.test(e.target.value)) {
+      addEmail(e.target.value);
+      setIsValid(true);
+      setIsError(false);
+    } else {
+      setIsError(true);
+      setIsValid(false);
+      setmessageError("Digite um e-mail válido!");
+    }
+  };
+
+  const goToQuestion = () => {
+    if (isValid) {
+    } else {
+      setmessageError("Email vazio ou inválido!");
+      setIsError(true);
+    }
+  };
+
   return (
     <Grid container className={classes.home}>
       <Header />
@@ -76,10 +115,14 @@ export default function Home() {
         <BootstrapInput
           fullWidth
           label="Qual o seu Email?"
-          variant="outlined"
+          onChange={setEmail}
         />
-
-        <Button variant="contained" className={classes.btn}>
+        {isError && <span className={classes.spanError}>{messageError}</span>}
+        <Button
+          variant="contained"
+          className={classes.btn}
+          onClick={goToQuestion}
+        >
           Vamos descobrir?
         </Button>
       </Grid>
