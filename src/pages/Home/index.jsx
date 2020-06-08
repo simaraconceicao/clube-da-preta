@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 
 import "./style.css";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   home: {
     paddingLeft: 16,
     paddingRight: 16,
@@ -76,7 +76,6 @@ export default function Home() {
 
   const setEmail = (e) => {
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    console.log(regex.test(e.target.value));
     if (regex.test(e.target.value)) {
       addEmail(e.target.value);
       setIsValid(true);

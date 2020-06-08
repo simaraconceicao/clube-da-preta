@@ -35,6 +35,7 @@ export default function QuestionOne() {
     addAnswerdOne(e);
     history.push("/pergunta-2");
   };
+
   useEffect(() => {
     if (!isEmail()) {
       history.push("/");
@@ -42,6 +43,7 @@ export default function QuestionOne() {
       history.push("/pergunta-2");
     }
   }, []);
+
   return (
     <Grid
       container

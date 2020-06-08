@@ -33,6 +33,15 @@ function QuestionsProvider({ children }) {
     return false;
   }
 
+  function getResult() {
+    /*pegar todas a respostas e fazer a lógica pra mostra tela de resultado*/
+    return 1;
+  }
+  function getBackgroudByResult() {
+    /*pegar todas a respostas e fazer a lógica pra mostra tela de resultado*/
+    return "#F7F0F1 canto-resultado-laran-mobile.svg";
+  }
+
   return (
     <QuestionsContext.Provider
       value={{
@@ -40,6 +49,8 @@ function QuestionsProvider({ children }) {
         addAnswerdOne,
         isEmail,
         isAnswerdOne,
+        getResult,
+        getBackgroudByResult,
       }}
     >
       {children}
