@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Header from "../../components/Header";
@@ -30,18 +30,33 @@ const useStyles = makeStyles((theme) => ({
 export default function QuestionOne() {
   const classes = useStyles();
   const { addAnswerdOne, isEmail, isAnswerdOne } = useContext(QuestionsContext);
+  const [numeroPagina, setNumeroPagina] = useState(18);
+  const [pagina, setPagina] = useState(1);
+
+  const [title, setTitle] = useState("");
+
+  const TitleOne = "Primeira Pergunta?";
+  const TitleSecond = "Segunda Pergunta?";
+
   const history = useHistory();
   const setAnswerd = (e) => {
     addAnswerdOne(e);
     history.push("/pergunta-2");
   };
+
   useEffect(() => {
     if (!isEmail()) {
       history.push("/");
     } else if (isAnswerdOne()) {
+      if (pagina === 1) {
+        setTitle(TitleOne);
+      } else if (pagina === 2) {
+        setTitle(TitleSecond);
+      }
       history.push("/pergunta-2");
     }
   }, []);
+
   return (
     <Grid
       container
@@ -54,7 +69,7 @@ export default function QuestionOne() {
       </Grid>
       <Grid container className={classes.gridContainer}>
         <Grid item xs={12} className={classes.gridTitle}>
-          <Title title="Primeira Pergunta?" />
+          <Title title={title} />
         </Grid>
         <Grid container justify="center" item xs={12}>
           <a onClick={() => setAnswerd("Resposta1")}>
