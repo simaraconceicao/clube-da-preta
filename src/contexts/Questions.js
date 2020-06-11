@@ -4,16 +4,19 @@ const QuestionsContext = createContext();
 
 function QuestionsProvider({ children }) {
   const [email, setEmail] = useState("");
-  const [answerdOne, setAnswerdOne] = useState("");
+  const [answerd, setAnswerd] = useState([]);
+  const arraySession = [];
 
   function addEmail(email) {
     setEmail(email);
     sessionStorage.setItem("email", JSON.stringify(email));
   }
 
-  function addAnswerdOne(answeradOne) {
-    sessionStorage.setItem("answerdOne", JSON.stringify(answeradOne));
-    addAnswerdOne(answeradOne);
+  function addAnswerd(params) {
+    arraySession.push(params);
+    console.log(arraySession);
+    setAnswerd((answerd) => [...answerd, arraySession]);
+    sessionStorage.setItem("answerds", JSON.stringify(answerd));
   }
 
   function isEmail() {
@@ -24,13 +27,13 @@ function QuestionsProvider({ children }) {
     return false;
   }
 
-  function isAnswerdOne() {
-    const answerdOne = sessionStorage.getItem("answerdOne");
-    if (answerdOne !== null) {
-      const one = JSON.parse(answerdOne);
-      return one !== undefined && one !== "";
+  function getAnswerd() {
+    const answerd = sessionStorage.getItem("answerds");
+    if (answerd !== "undefined") {
+      return JSON.parse(answerd);
     }
-    return false;
+
+    return [];
   }
 
   function getResult() {
@@ -46,11 +49,11 @@ function QuestionsProvider({ children }) {
     <QuestionsContext.Provider
       value={{
         addEmail,
-        addAnswerdOne,
+        addAnswerd,
         isEmail,
-        isAnswerdOne,
         getResult,
         cleanAllSession,
+        getAnswerd,
       }}
     >
       {children}

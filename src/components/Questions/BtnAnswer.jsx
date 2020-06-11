@@ -8,8 +8,9 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#f27253",
     border: "#fff 1px solid",
     boxShadow: 0,
-    width: 170,
+    maxWidth: 200,
     height: 40,
+    margin: 4,
     textTransform: "capitalize",
     "&:hover": {
       backgroundColor: "#f27200",

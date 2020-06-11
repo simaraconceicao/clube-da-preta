@@ -92,7 +92,7 @@ export default function Home() {
 
   const goToQuestion = () => {
     if (isValid) {
-      history.push("/pergunta-1");
+      history.push("/perguntas");
     } else {
       setmessageError("Email vazio ou inválido!");
       setIsError(true);

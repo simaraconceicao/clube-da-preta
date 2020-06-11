@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+export default function Header({ color }) {
   const classes = useStyles();
 
   return (
@@ -22,6 +22,7 @@ export default function Header() {
       className={classes.gridheader}
       justify="space-between"
       alignItems="center"
+      style={{ color: color }}
     >
       <Grid item>
         <span>Quiz: Qual seu estilo?</span>

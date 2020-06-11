@@ -38,5 +38,32 @@
     "style": ["Esporte", "Esporte Fino", "Clássico", "Fashion"],
     "img": "man.svg",
     "imgHeader": "canto-resultado-laran-mobile.svg"
-  }
+  },
+
+  "question": [
+    {
+      "id": 1,
+      "title": "O que voce prefere ?",
+      "answerds": [
+        { "title": "Netflix", "answerd": 1 },
+        { "title": "Balada", "answerd": 5 }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Aos finais de semana você gosta de...",
+      "answerds": [
+        { "title": "Descansar em casa", "answerd": 3 },
+        { "title": "Jantar fora", "answerd": 2 }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Qual atividade física você prefere?",
+      "answerds": [
+        { "title": "Ao ar livre", "answerd": 4 },
+        { "title": "Na academia", "answerd": 3 }
+      ]
+    }
+  ]
 }

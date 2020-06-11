@@ -2,8 +2,7 @@ import React, { Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import Home from "./pages/Home";
-import QuestionOne from "./pages/QuestionOne";
-import QuestionTwo from "./pages/QuestionTwo";
+import Questions from "./pages/Questions";
 import Result from "./pages/Result";
 
 import { QuestionsProvider } from "./contexts/Questions";
@@ -14,8 +13,7 @@ function App() {
       <Container style={{ padding: 0, maxWidth: "100%" }}>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/pergunta-1" component={QuestionOne} />
-          <Route path="/pergunta-2" component={QuestionTwo} />
+          <Route path="/perguntas" component={Questions} />
           <Route path="/resultado" component={Result} />
         </Switch>
       </Container>
