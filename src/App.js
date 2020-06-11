@@ -11,7 +11,7 @@ import { QuestionsProvider } from "./contexts/Questions";
 function App() {
   return (
     <QuestionsProvider>
-      <Container style={{ padding: 0 }} maxWidth="lg">
+      <Container style={{ padding: 0, maxWidth: "100%" }}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/pergunta-1" component={QuestionOne} />

@@ -1,13 +1,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   gridheader: {
     height: 100,
     fontFamily: "Intro Bold, Regular",
     color: "#F27253",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
 }));
 
