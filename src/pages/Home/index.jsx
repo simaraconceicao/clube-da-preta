@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 
 import "./style.css";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   home: {
     paddingLeft: 16,
     paddingRight: 16,
@@ -17,6 +17,9 @@ const useStyles = makeStyles(() => ({
     height: "100vh",
     background: "#fdeec9 url('woman.svg') no-repeat -80px -92%",
     backgroundSize: "560px 753px",
+    [theme.breakpoints.up("md")]: {
+      background: "#fdeec9 url('woman.svg') no-repeat -80px -92%",
+    },
   },
   hOne: {
     textAlign: "center",
@@ -99,31 +102,39 @@ export default function Home() {
   return (
     <Grid container className={classes.home}>
       <Header />
-      <Grid item>
-        <h1 className={classes.hOne}>Qual o seu estilo?</h1>
-        <p className={classes.p}>
-          Você tem ideia de qual é seu estilo feito por afroempreendedores?
-          Identificamos dentre os fornecedores do Clube da Preta alguns diversos
-          estilos de moda. E conseguimos identificar 5 que são os mais comuns
-          entre eles: Basico, Clássico, Casual, Esporte e Fashion. Que tal
-          participar do nosso quiz para saber qual mais combina com você? Vem,
-          vamos descobrir juntos!
-        </p>
-      </Grid>
-      <Grid container direction="column" alignItems="center">
-        <BootstrapInput
-          fullWidth
-          label="Qual o seu Email?"
-          onChange={setEmail}
-        />
-        {isError && <span className={classes.spanError}>{messageError}</span>}
-        <Button
-          variant="contained"
-          className={classes.btn}
-          onClick={goToQuestion}
+      <Grid container alignItems="center" direction="column">
+        <Grid
+          container
+          alignItems="center"
+          direction="column"
+          item
+          md={4}
+          xs={12}
         >
-          Vamos descobrir?
-        </Button>
+          <h1 className={classes.hOne}>Qual o seu estilo?</h1>
+          <p className={classes.p}>
+            Você tem ideia de qual é seu estilo feito por afroempreendedores?
+            Identificamos dentre os fornecedores do Clube da Preta alguns
+            diversos estilos de moda. E conseguimos identificar 5 que são os
+            mais comuns entre eles: Basico, Clássico, Casual, Esporte e Fashion.
+            Que tal participar do nosso quiz para saber qual mais combina com
+            você? Vem, vamos descobrir juntos!
+          </p>
+          <BootstrapInput
+            fullWidth
+            label="Qual o seu Email?"
+            onChange={setEmail}
+          />
+          {isError && <span className={classes.spanError}>{messageError}</span>}
+          <br />
+          <Button
+            variant="contained"
+            className={classes.btn}
+            onClick={goToQuestion}
+          >
+            Vamos descobrir?
+          </Button>
+        </Grid>
       </Grid>
     </Grid>
   );

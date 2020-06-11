@@ -62,6 +62,12 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  gridHeader: {
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+    },
+  },
   footer: {
     width: "70%",
     display: "flex",
@@ -179,7 +185,9 @@ export default function Result() {
       className={classes.questions}
     >
       <Container maxWidth="lg">
-        <Header />
+        <div className={classes.gridHeader}>
+          <Header />
+        </div>
         {getHeaderByResult(getResult())}
         <Grid
           container

@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Intro Bold, Regular",
     color: "#F27253",
     [theme.breakpoints.down("md")]: {
-      display: "none",
+      //display: "none",
     },
   },
 }));
