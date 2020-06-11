@@ -37,9 +37,9 @@ function QuestionsProvider({ children }) {
     /*pegar todas a respostas e fazer a lógica pra mostra tela de resultado*/
     return 1;
   }
-  function getBackgroudByResult() {
-    /*pegar todas a respostas e fazer a lógica pra mostra tela de resultado*/
-    return "#F7F0F1 canto-resultado-laran-mobile.svg";
+
+  function cleanAllSession() {
+    sessionStorage.clear();
   }
 
   return (
@@ -50,7 +50,7 @@ function QuestionsProvider({ children }) {
         isEmail,
         isAnswerdOne,
         getResult,
-        getBackgroudByResult,
+        cleanAllSession,
       }}
     >
       {children}

@@ -62,6 +62,17 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  footer: {
+    width: "70%",
+    display: "flex",
+    justifyContent: "space-between",
+    bottom: 61,
+    position: "fixed",
+    zIndex: 1,
+    "& strong:first-child": {
+      cursor: "pointer",
+    },
+  },
 }));
 
 function geTitleByResult(result) {
@@ -144,12 +155,12 @@ function getStyleByResult(result) {
 
 export default function Result() {
   const classes = useStyles();
-  const { getResult, getBackgroudByResult } = useContext(QuestionsContext);
+  const { getResult, cleanAllSession } = useContext(QuestionsContext);
   const history = useHistory();
 
-  const setAnswerd = (e) => {
-    //addAnswerdOne(e);
-    //history.push("/pergunta-2");
+  const gotToStart = () => {
+    cleanAllSession();
+    history.push("/");
   };
   useEffect(() => {
     /*todas as questao foram respondidas? senao volte para tela inicial*/
@@ -181,7 +192,6 @@ export default function Result() {
           <Grid item xs={12} className={classes.gridTitle}>
             {geTitleByResult(getResult())}
           </Grid>
-
           <Grid
             container
             item
@@ -225,6 +235,10 @@ export default function Result() {
 
           <img src="logocp.svg" />
         </Grid>
+        <footer className={classes.footer}>
+          <strong onClick={gotToStart}>refazer o teste</strong>
+          <strong>ilustração by humaaans</strong>
+        </footer>
       </Container>
     </Grid>
   );
