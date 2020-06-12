@@ -1,5 +1,5 @@
 {
-  "basic": {
+  "básico": {
     "id": 1,
     "title": "Básico",
     "description": "O básico não se deixa errar, por isso está sempre vestido de peças chaves e atemporais. A calça jeans e o blazer de alfaiataria são itens indispensáveis em seus guarda-roupas. Ouso dizer que são os pioneiros do minimalismo que ao longo do tempo vem criando adeptos dos guarda roupas cápsulas, e das tendências de looks confortáveis, versáteis, atemporais e duradouros",
@@ -7,7 +7,7 @@
     "img": "man.svg",
     "imgHeader": "canto-resultado-laran-mobile.svg"
   },
-  "classico": {
+  "clássico": {
     "id": 2,
     "title": "Clássico",
     "description": "Os adeptos a esse estilo geralmente tem personalidades fortes e de liderança, a intenção é passar através de tecidos finos  como seda e alfaiataria, cortes retos e o perfeito caimento uma imagem de força e sofisticação. Amantes da alta costura, adeptos ao clássico são exemplo de bom gosto e bom senso pois não abrem mão do conforto para se sentirem elegantes.",
@@ -43,7 +43,7 @@
   "question": [
     {
       "id": 1,
-      "title": "O que voce prefere ?",
+      "title": "O que você prefere?",
       "answerds": [
         { "title": "Netflix", "answerd": 1 },
         { "title": "Balada", "answerd": 5 }
@@ -63,6 +63,118 @@
       "answerds": [
         { "title": "Ao ar livre", "answerd": 4 },
         { "title": "Na academia", "answerd": 3 }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Qual tipo de música você mais escuta? ",
+      "answerds": [
+        { "title": "Clássica", "answerd": 2 },
+        { "title": "Popular", "answerd": 4 }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Você no instagram é...",
+      "answerds": [
+        { "title": "Gosto de postar", "answerd": 5 },
+        { "title": "Gosto de curtir", "answerd": 2 }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Como curte passar seu passatempo?",
+      "answerds": [
+        { "title": "Ler um livro", "answerd": 4 },
+        { "title": "Ver um filme", "answerd": 5 }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Você gosta de se vestir para...",
+      "answerds": [
+        { "title": "Uma festa", "answerd": 5 },
+        { "title": "O dia a dia", "answerd": 1 }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Qual a cor da sua preferência...",
+      "answerds": [
+        { "title": "Colorida", "answerd": 5 },
+        { "title": "Neutra", "answerd": 2 }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Gosta de passar uma imagem...",
+      "answerds": [
+        { "title": "Elegante", "answerd": 5 },
+        { "title": "Fashionista", "answerd": 1 }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Para compor seus looks são peças...",
+      "answerds": [
+        { "title": "Estampadas", "answerd": 3 },
+        { "title": "Lisas", "answerd": 2 }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Meu jeans é...",
+      "answerds": [
+        { "title": "Rasgado", "answerd": 5 },
+        { "title": "Liso", "answerd": 3 }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Look ...",
+      "answerds": [
+        { "title": "Com Acessório", "answerd": 3 },
+        { "title": "Sem Acessório", "answerd": 1 }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Roupas de...",
+      "answerds": [
+        { "title": "Marcas famosas", "answerd": 5 },
+        { "title": "Microempreendedores", "answerd": 2 }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Quando você se arruma, pergunta para alguém se está bom?",
+      "answerds": [
+        { "title": "Sim", "answerd": 2 },
+        { "title": "Não", "answerd": 5 }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Você sabe que tipo de roupa lhe cai bem?",
+      "answerds": [
+        { "title": "Sim", "answerd": 5 },
+        { "title": "Não", "answerd": 1 }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Se a pessoa falar que está ruim você se troca?",
+      "answerds": [
+        { "title": "Sim", "answerd": 2 },
+        { "title": "Não", "answerd": 5 }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Compra roupa para cada novo evento?",
+      "answerds": [
+        { "title": "Sim", "answerd": 1 },
+        { "title": "Não", "answerd": 4 }
       ]
     }
   ]
