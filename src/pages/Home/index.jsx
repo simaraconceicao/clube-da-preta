@@ -23,9 +23,14 @@ const useStyles = makeStyles((theme) => ({
   },
   hOne: {
     textAlign: "center",
+    [theme.breakpoints.up("md")]: {
+      fontSize: "3.0rem",
+    },
   },
   p: {
     textAlign: "center",
+    letterSpacing: 1.2,
+    lineHeight: 1.5,
   },
   btn: {
     color: "#fff",
@@ -114,8 +119,9 @@ export default function Home() {
           alignItems="center"
           direction="column"
           item
-          md={4}
+          md={8}
           xs={12}
+          lg={5}
         >
           <h1 className={classes.hOne}>Qual o seu estilo?</h1>
           <p className={classes.p}>

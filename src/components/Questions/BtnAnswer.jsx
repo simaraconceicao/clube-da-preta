@@ -2,19 +2,20 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   btn: {
     color: "#fff",
     backgroundColor: "#f27253",
     border: "#fff 1px solid",
     boxShadow: 0,
-    maxWidth: 200,
+    minWidth: 200,
     height: 40,
-    margin: 4,
+
     textTransform: "capitalize",
     "&:hover": {
       backgroundColor: "#f27200",
     },
+    [theme.breakpoints.up("sm")]: {},
   },
 }));
 

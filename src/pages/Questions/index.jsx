@@ -18,6 +18,16 @@ const useStyles = makeStyles((theme) => ({
     background:
       "#f27253 url('background-questions-mobile.svg') no-repeat  6% 50%",
     backgroundSize: "202% 400%",
+    [theme.breakpoints.up("md")]: {
+      background:
+        "#f27253 url('background-questions-mobile.svg') no-repeat  20% 54%",
+      backgroundSize: "202% 145%",
+    },
+    [theme.breakpoints.up("md")]: {
+      background:
+        "#f27253 url('background-questions-mobile.svg') no-repeat  35% 54%",
+      backgroundSize: "202% 155%",
+    },
   },
   footer: {
     width: "100%",

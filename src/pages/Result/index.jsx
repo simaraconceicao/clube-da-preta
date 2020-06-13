@@ -69,14 +69,22 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   footer: {
-    width: "70%",
     display: "flex",
     justifyContent: "space-between",
-    bottom: 61,
+    bottom: 11,
     position: "fixed",
     zIndex: 1,
+    boxSizing: "border-box",
+    fontSize: "12px",
+    width: "84%",
+
     "& strong:first-child": {
       cursor: "pointer",
+    },
+    [theme.breakpoints.up("md")]: {
+      bottom: 61,
+      width: "70%",
+      fontSize: "16px",
     },
   },
 }));
@@ -207,7 +215,7 @@ export default function Result() {
           <Grid
             container
             item
-            xs={10}
+            xs={12}
             lg={4}
             className={classes.gridDescription}
           >

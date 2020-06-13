@@ -10,6 +10,11 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     fontSize: 24,
     letterSpacing: 4,
+    fontWeight: 900,
+    [theme.breakpoints.up("md")]: {
+      fontSize: 34,
+      letterSpacing: 4,
+    },
   },
 }));
 

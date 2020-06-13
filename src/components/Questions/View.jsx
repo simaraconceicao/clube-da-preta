@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   gridBtn: {
     textAlign: "center",
     height: 110,
+    justifyContent: "center",
+    [theme.breakpoints.up("sm")]: {
+      justifyContent: "space-between",
+    },
   },
 }));
 
@@ -51,8 +55,9 @@ export default function View({ question, show, onRealQuestion }) {
             container
             justify="space-between"
             xs={12}
-            md={4}
-            lg={2}
+            sm={8}
+            md={8}
+            lg={5}
             className={classes.gridBtn}
           >
             {question.answerds.map((answerd) => (
