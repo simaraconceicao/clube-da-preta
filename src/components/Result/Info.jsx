@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Info({ dados }) {
   const classes = useStyles();
-
   return (
     <p>
       <p

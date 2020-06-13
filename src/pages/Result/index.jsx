@@ -83,8 +83,6 @@ const useStyles = makeStyles((theme) => ({
 
 function geTitleByResult(result) {
   switch (result) {
-    case textsApp.basic.id:
-      return <Title title={textsApp.basic.title} />;
     case textsApp.casual.id:
       return <Title title={textsApp.casual.title} />;
     case textsApp.classico.id:
@@ -95,16 +93,12 @@ function geTitleByResult(result) {
       return <Title title={textsApp.fashion.title} />;
 
     default:
-      return <Title title={textsApp.basic.title} />;
+      return <Title title={textsApp.basico.title} />;
   }
 }
 
 function getDescriptionByResult(result) {
   switch (result) {
-    case textsApp.basic.id:
-      return <Description description={textsApp.basic.description} />;
-    case textsApp.casual.id:
-      return <Description description={textsApp.casual.description} />;
     case textsApp.classico.id:
       return <Description description={textsApp.classico.description} />;
     case textsApp.esporte.id:
@@ -113,14 +107,12 @@ function getDescriptionByResult(result) {
       return <Description description={textsApp.fashion.description} />;
 
     default:
-      return <Description description={textsApp.basic.description} />;
+      return <Description description={textsApp.basico.description} />;
   }
 }
 
 function getHeaderByResult(result) {
   switch (result) {
-    case textsApp.basic.id:
-      return <HeaderResult img={textsApp.basic.imgHeader} />;
     case textsApp.casual.id:
       return <HeaderResult img={textsApp.casual.imgHeader} />;
     case textsApp.classico.id:
@@ -131,38 +123,48 @@ function getHeaderByResult(result) {
       return <HeaderResult description={textsApp.fashion.imgHeader} />;
 
     default:
-      return <HeaderResult img={textsApp.basic.imgHeader} />;
+      return <HeaderResult img={textsApp.basico.imgHeader} />;
   }
 }
 
 function getImgByResult(result) {
   switch (result) {
-    case 1:
-      return <ImgResult img={textsApp.basic.img} />;
     case 2:
       return <ImgResult img={textsApp.casual.img} />;
 
     default:
-      return <ImgResult img={textsApp.basic.img} />;
+      return <ImgResult img={textsApp.basico.img} />;
   }
 }
 
 function getStyleByResult(result) {
   switch (result) {
-    case 1:
-      return <Info dados={textsApp.basic.style} />;
-    case 2:
+    case textsApp.casual.id:
       return <Info dados={textsApp.casual.style} />;
-
+    case textsApp.classico.id:
+      return <Info dados={textsApp.classico.style} />;
+    case textsApp.esporte.id:
+      console.log(textsApp.esporte.style, "getStyleByResult");
+      return <Info dados={textsApp.esporte.style} />;
+    case textsApp.fashion.id:
+      return <Info dados={textsApp.fashion.style} />;
     default:
-      return <Info dados={textsApp.basic.style} />;
+      return <Info dados={textsApp.basico.style} />;
   }
 }
 
 export default function Result() {
   const classes = useStyles();
-  const { getResult, cleanAllSession } = useContext(QuestionsContext);
+  const {
+    getResult,
+    cleanAllSession,
+    isAnswerdAllQuestion,
+    isEmail,
+  } = useContext(QuestionsContext);
   const history = useHistory();
+  const result = getResult();
+
+  console.log("result", result);
 
   const gotToStart = () => {
     cleanAllSession();
@@ -170,11 +172,13 @@ export default function Result() {
   };
   useEffect(() => {
     /*todas as questao foram respondidas? senao volte para tela inicial*/
-    /*if (!isEmail()) {
+    if (!isEmail()) {
       history.push("/");
-    } else if (isAnswerdOne()) {
-      history.push("/pergunta-2");
-    }*/
+    } else if (!isAnswerdAllQuestion()) {
+      //nao respondeu todas as questoes?
+      //onde parei ? volte para onde eu parei
+      history.push("/perguntas");
+    }
   }, []);
 
   return (
@@ -188,17 +192,17 @@ export default function Result() {
         <div className={classes.gridHeader}>
           <Header />
         </div>
-        {getHeaderByResult(getResult())}
+        {getHeaderByResult(result)}
         <Grid
           container
           direction="row"
           alignItems="flex-start"
           className={classes.gridContainer}
         >
-          {getImgByResult(getResult())}
+          {getImgByResult(result)}
 
           <Grid item xs={12} className={classes.gridTitle}>
-            {geTitleByResult(getResult())}
+            {geTitleByResult(result)}
           </Grid>
           <Grid
             container
@@ -207,7 +211,7 @@ export default function Result() {
             lg={4}
             className={classes.gridDescription}
           >
-            {getDescriptionByResult(getResult())}
+            {getDescriptionByResult(result)}
           </Grid>
           <Grid
             container
@@ -217,7 +221,7 @@ export default function Result() {
             className={classes.gridDescriptionLg}
           >
             <Grid item md={5} style={{ paddingRight: 20 }}>
-              {getDescriptionByResult(getResult())}
+              {getDescriptionByResult(result)}
             </Grid>
             <Grid item md={6} style={{ padding: "84px 0 0 40px" }}>
               <Shared />
@@ -234,7 +238,7 @@ export default function Result() {
             <Grid item md={3} xs={6}>
               <strong>Conheça outros estilos</strong>
               <br />
-              {getStyleByResult(getResult())}
+              {getStyleByResult(result)}
             </Grid>
             <Grid item xs={2} className={classes.gridShared}>
               <Shared />

@@ -43,32 +43,62 @@ export default function Question() {
   const [amountQuestion, setAmountQuestion] = useState(0);
   const [answerds, setAnswerds] = useState([]);
 
-  const { isEmail, cleanAllSession, getAnswerd } = useContext(QuestionsContext);
+  const {
+    isEmail,
+    cleanAllSession,
+    getNowQuestion,
+    addScoreBoard,
+    getAnswerd,
+  } = useContext(QuestionsContext);
   const history = useHistory();
-  const questionsAnswerd = getAnswerd();
 
   useEffect(() => {
+    const nq = getNowQuestion();
+
+    setQuestions(QuestionsApp.question);
+
     if (!isEmail()) {
       history.push("/");
     }
-    setQuestions(QuestionsApp.question);
-    setAmountQuestion(QuestionsApp.question.length);
+
+    if (QuestionsApp.question !== undefined) {
+      // o objetivo aque é volta para questao que o usuario parou caso ele tenha apertado f5
+      if (nq !== null) {
+        setNowQuestion(parseInt(nq));
+        if (
+          nq > QuestionsApp.question.length &&
+          QuestionsApp.question.length !== 0
+        ) {
+          history.push("/resultado");
+        }
+      } else {
+        sessionStorage.setItem("nowQuestion", nowQuestion);
+      }
+    }
   }, []);
 
   const getRealQuestion = (question) => {
-    setAnswerds((answerds) => [...answerds, question]);
+    addScoreBoard(question);
+    //pega as poerguntas na session
+    const cacheAnswerd = getAnswerd();
+    cacheAnswerd.push(question);
+    console.log(question, cacheAnswerd);
+
+    setAnswerds(cacheAnswerd);
   };
 
   useEffect(() => {
+    console.log(0);
     if (amountQuestion !== 0) {
-      console.log(nowQuestion, amountQuestion);
-
       setNowQuestion(nowQuestion + 1);
+      sessionStorage.setItem("nowQuestion", nowQuestion + 1);
       sessionStorage.setItem("answerds", JSON.stringify(answerds));
-      if (nowQuestion >= amountQuestion) {
+      if (nowQuestion + 1 > amountQuestion) {
+        sessionStorage.setItem("finish", true);
         history.push("/resultado");
       }
     }
+    setAmountQuestion(QuestionsApp.question.length);
   }, [answerds]);
 
   const gotToStart = () => {
@@ -89,9 +119,10 @@ export default function Question() {
         </Grid>
         {questions.map((question) => (
           <View
+            key={question.id}
             question={question}
-            show={question.id === nowQuestion}
-            onRealQuestion={getRealQuestion}
+            show={question.id == nowQuestion}
+            onRealQuestion={(e) => getRealQuestion(e)}
           />
         ))}
         <Grid

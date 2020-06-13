@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
@@ -74,7 +74,7 @@ export default function Home() {
   const [isValid, setIsValid] = useState(false);
   const [messageError, setmessageError] = useState("");
   const classes = useStyles();
-  const { addEmail } = useContext(QuestionsContext);
+  const { addEmail, isEmail } = useContext(QuestionsContext);
   const history = useHistory();
 
   const setEmail = (e) => {
@@ -98,6 +98,12 @@ export default function Home() {
       setIsError(true);
     }
   };
+
+  useEffect(() => {
+    if (isEmail()) {
+      history.push("/perguntas");
+    }
+  }, []);
 
   return (
     <Grid container className={classes.home}>
