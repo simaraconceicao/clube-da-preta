@@ -15,22 +15,36 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 16,
     color: "#646464",
     height: "100vh",
-    background: "#fdeec9 url('woman.svg') no-repeat -80px -92%",
-    backgroundSize: "560px 753px",
+    backgroundColor: "#fdeec9",
+    maxHeight: "100%",
+    overflow: "hidden",
+
+    //background: "#fdeec9 url('woman.svg') no-repeat -80px -92%",
+    //backgroundSize: "560px 753px",
     [theme.breakpoints.up("md")]: {
-      background: "#fdeec9 url('woman.svg') no-repeat -80px -92%",
+      //background: "#fdeec9 url('woman.svg') no-repeat -80px -92%",
+    },
+
+    [theme.breakpoints.up("lg")]: {
+      position: "relative",
     },
   },
   hOne: {
     textAlign: "center",
+    margin: "7px 0",
     [theme.breakpoints.up("md")]: {
       fontSize: "3.0rem",
+      margin: 16,
     },
   },
   p: {
     textAlign: "center",
-    letterSpacing: 1.2,
-    lineHeight: 1.5,
+    letterSpacing: 1.0,
+    lineHeight: 1.2,
+    [theme.breakpoints.up("md")]: {
+      letterSpacing: 1.2,
+      lineHeight: 1.5,
+    },
   },
   btn: {
     color: "#fff",
@@ -49,6 +63,63 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 6,
     display: "block",
     width: "100%",
+  },
+  gridImg: {
+    display: "none",
+    backgroundColor: "rgba(255,255,255,0.01)",
+    position: "absolute",
+    zIndex: "-1",
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+      "& img": {
+        right: "0",
+        left: 220,
+        position: "absolute",
+        top: "-293px",
+      },
+    },
+  },
+  gridImgWoman: {
+    position: "absolute",
+    zIndex: "-1",
+    right: "44px",
+    left: "-152px",
+    top: "-94px",
+    backgroundColor: "rgba(255,255,255,0.01)",
+    "& img": {
+      width: "152%",
+    },
+    [theme.breakpoints.up("sm")]: {
+      "& img": {
+        position: "absolute",
+        top: -10,
+        right: 0,
+        left: "-37%",
+        width: "110%",
+      },
+    },
+    [theme.breakpoints.up("md")]: {
+      "& img": {
+        position: "absolute",
+        top: -210,
+        right: 0,
+        left: "-76%",
+        width: "160%",
+      },
+      [theme.breakpoints.up("lg")]: {
+        "& img": {
+          position: "absolute",
+          top: -286,
+          right: 0,
+          left: "-8%",
+          width: 999,
+        },
+      },
+    },
+  },
+  gridContainer: {
+    position: "relative",
+    zIndex: 1,
   },
 }));
 
@@ -121,31 +192,44 @@ export default function Home() {
           item
           md={8}
           xs={12}
-          lg={5}
+          lg={12}
+          className={classes.gridContainer}
         >
-          <h1 className={classes.hOne}>Qual o seu estilo?</h1>
-          <p className={classes.p}>
-            Você tem ideia de qual é seu estilo feito por afroempreendedores?
-            Identificamos dentre os fornecedores do Clube da Preta alguns
-            diversos estilos de moda. E conseguimos identificar 5 que são os
-            mais comuns entre eles: Basico, Clássico, Casual, Esporte e Fashion.
-            Que tal participar do nosso quiz para saber qual mais combina com
-            você? Vem, vamos descobrir juntos!
-          </p>
-          <BootstrapInput
-            fullWidth
-            label="Qual o seu Email?"
-            onChange={setEmail}
-          />
-          {isError && <span className={classes.spanError}>{messageError}</span>}
-          <br />
-          <Button
-            variant="contained"
-            className={classes.btn}
-            onClick={goToQuestion}
-          >
-            Vamos descobrir?
-          </Button>
+          <Grid item lg={4} className={classes.gridImgWoman}>
+            <img src="woman-home.svg" />
+          </Grid>
+          <Grid item lg={6} style={{ textAlign: "center" }}>
+            <h1 className={classes.hOne}>Qual o seu estilo?</h1>
+            <p className={classes.p}>
+              Você tem ideia de qual é seu estilo feito por afroempreendedores?
+              Identificamos dentre os fornecedores do Clube da Preta alguns
+              diversos estilos de moda. E conseguimos identificar 5 que são os
+              mais comuns entre eles: Basico, Clássico, Casual, Esporte e
+              Fashion. Que tal participar do nosso quiz para saber qual mais
+              combina com você? Vem, vamos descobrir juntos!
+            </p>
+
+            <BootstrapInput
+              fullWidth
+              label="Qual o seu Email?"
+              onChange={setEmail}
+            />
+            {isError && (
+              <span className={classes.spanError}>{messageError}</span>
+            )}
+            <br />
+            <br />
+            <Button
+              variant="contained"
+              className={classes.btn}
+              onClick={goToQuestion}
+            >
+              Vamos descobrir?
+            </Button>
+          </Grid>
+          <Grid item lg={2} className={classes.gridImg}>
+            <img src="man.svg" />
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

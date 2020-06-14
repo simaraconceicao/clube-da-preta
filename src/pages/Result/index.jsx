@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#646464",
     height: "100vh",
     maxHeight: "100vh",
-    backgroundColor: "#F7F0F1",
     margin: 0,
     position: "relative",
     overflow: "hidden",
@@ -137,9 +136,14 @@ function getHeaderByResult(result) {
 
 function getImgByResult(result) {
   switch (result) {
-    case 2:
+    case textsApp.casual.id:
       return <ImgResult img={textsApp.casual.img} />;
-
+    case textsApp.classico.id:
+      return <ImgResult img={textsApp.classico.img} />;
+    case textsApp.esporte.id:
+      return <ImgResult img={textsApp.esporte.img} />;
+    case textsApp.fashion.id:
+      return <ImgResult img={textsApp.fashion.img} />;
     default:
       return <ImgResult img={textsApp.basico.img} />;
   }
@@ -152,7 +156,6 @@ function getStyleByResult(result) {
     case textsApp.classico.id:
       return <Info dados={textsApp.classico.style} />;
     case textsApp.esporte.id:
-      console.log(textsApp.esporte.style, "getStyleByResult");
       return <Info dados={textsApp.esporte.style} />;
     case textsApp.fashion.id:
       return <Info dados={textsApp.fashion.style} />;
@@ -189,12 +192,58 @@ export default function Result() {
     }
   }, []);
 
+  const getBackgroundColor = () => {
+    console.log(textsApp.fashion);
+    switch (result) {
+      case textsApp.casual.id:
+        return textsApp.casual.backgroudColor;
+      case textsApp.classico.id:
+        return textsApp.classico.backgroudColor;
+      case textsApp.esporte.id:
+        return textsApp.esporte.backgroudColor;
+      case textsApp.fashion.id:
+        return textsApp.fashion.backgroudColor;
+      default:
+        return textsApp.basico.backgroudColor;
+    }
+  };
+  const getColor = () => {
+    switch (result) {
+      case textsApp.casual.id:
+        return textsApp.casual.color;
+      case textsApp.classico.id:
+        return textsApp.classico.color;
+      case textsApp.esporte.id:
+        return textsApp.esporte.color;
+      case textsApp.fashion.id:
+        return textsApp.fashion.color;
+      default:
+        return textsApp.basico.color;
+    }
+  };
+
+  const getLogo = () => {
+    switch (result) {
+      case textsApp.casual.id:
+        return textsApp.casual.imgHeader;
+      case textsApp.classico.id:
+        return textsApp.classico.imgHeader;
+      case textsApp.esporte.id:
+        return textsApp.esporte.imgHeader;
+      case textsApp.fashion.id:
+        return textsApp.fashion.imgHeader;
+      default:
+        return textsApp.basico.imgHeader;
+    }
+  };
+
   return (
     <Grid
       container
       direction="column"
       alignItems="start"
       className={classes.questions}
+      style={{ backgroundColor: getBackgroundColor(), color: getColor() }}
     >
       <Container maxWidth="lg">
         <div className={classes.gridHeader}>
@@ -253,7 +302,7 @@ export default function Result() {
             </Grid>
           </Grid>
 
-          <img src="logocp.svg" />
+          <img src={getLogo()} />
         </Grid>
         <footer className={classes.footer}>
           <strong onClick={gotToStart}>refazer o teste</strong>

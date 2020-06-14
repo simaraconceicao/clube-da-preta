@@ -4,11 +4,12 @@ import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   gridheader: {
-    height: 100,
+    height: 50,
     fontFamily: "Intro Bold, Regular",
     color: "#F27253",
-    [theme.breakpoints.down("md")]: {
-      //display: "none",
+
+    [theme.breakpoints.up("md")]: {
+      height: 100,
     },
   },
 }));
