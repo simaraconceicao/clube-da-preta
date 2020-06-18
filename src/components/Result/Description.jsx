@@ -13,10 +13,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export default function Description({ description }) {
+export default function Description({ description, color }) {
   const classes = useStyles();
   const matches = useMediaQuery("(min-width:600px)");
   let text = description;
+  console.log(color);
   if (matches) {
     text = description.substr(
       0,
@@ -33,6 +34,7 @@ export default function Description({ description }) {
     <p
       className={classes.description}
       dangerouslySetInnerHTML={{ __html: text }}
+      style={{ color: color }}
     ></p>
   );
 }

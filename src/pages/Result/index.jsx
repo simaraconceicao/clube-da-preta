@@ -103,20 +103,6 @@ function geTitleByResult(result) {
   }
 }
 
-function getDescriptionByResult(result) {
-  switch (result) {
-    case textsApp.classico.id:
-      return <Description description={textsApp.classico.description} />;
-    case textsApp.esporte.id:
-      return <Description description={textsApp.esporte.description} />;
-    case textsApp.fashion.id:
-      return <Description description={textsApp.fashion.description} />;
-
-    default:
-      return <Description description={textsApp.basico.description} />;
-  }
-}
-
 function getHeaderByResult(result) {
   switch (result) {
     case textsApp.casual.id:
@@ -178,6 +164,57 @@ export default function Result() {
     cleanAllSession();
     history.push("/");
   };
+
+  const getDescriptionByResult = (result) => {
+    switch (result) {
+      case textsApp.classico.id:
+        return (
+          <Description
+            description={textsApp.classico.description}
+            color={getColor()}
+          />
+        );
+      case textsApp.esporte.id:
+        return (
+          <Description
+            description={textsApp.esporte.description}
+            color={getColor()}
+          />
+        );
+      case textsApp.fashion.id:
+        return (
+          <Description
+            description={textsApp.fashion.description}
+            color={getColor()}
+          />
+        );
+
+      default:
+        return (
+          <Description
+            description={textsApp.basico.description}
+            color={getColor()}
+          />
+        );
+    }
+  };
+
+  const geTitleByResult = (result) => {
+    switch (result) {
+      case textsApp.casual.id:
+        return <Title title={textsApp.casual.title} color={getColor()} />;
+      case textsApp.classico.id:
+        return <Title title={textsApp.classico.title} color={getColor()} />;
+      case textsApp.esporte.id:
+        return <Title title={textsApp.esporte.title} color={getColor()} />;
+      case textsApp.fashion.id:
+        return <Title title={textsApp.fashion.title} color={getColor()} />;
+
+      default:
+        return <Title title={textsApp.basico.title} color={getColor()} />;
+    }
+  };
+
   useEffect(() => {
     /*todas as questao foram respondidas? senao volte para tela inicial*/
     if (!isEmail()) {
@@ -264,7 +301,7 @@ export default function Result() {
             lg={4}
             className={classes.gridDescription}
           >
-            {getDescriptionByResult(result)}
+            {getDescriptionByResult(result, getColor())}
           </Grid>
           <Grid
             container

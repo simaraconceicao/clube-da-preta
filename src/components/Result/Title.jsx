@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Title({ title }) {
+export default function Title({ title, color }) {
   const classes = useStyles();
 
   return (
-    <p className={classes.title} style={{ whiteSpace: "wrap" }}>
+    <p className={classes.title} style={{ whiteSpace: "wrap", color: color }}>
       Seu estilo é<p className={classes.destaque}>{title}</p>
     </p>
   );
