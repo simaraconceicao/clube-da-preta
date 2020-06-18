@@ -7,6 +7,8 @@ import View from "../../components/Questions/View";
 import { QuestionsContext } from "../../contexts/Questions";
 import Container from "@material-ui/core/Container";
 import QuestionsApp from "../../texts/texts.json";
+import Facebook from "@material-ui/icons/Facebook";
+import Instagram from "@material-ui/icons/Instagram";
 
 const useStyles = makeStyles((theme) => ({
   questions: {
@@ -144,10 +146,10 @@ export default function Question() {
         >
           <strong onClick={gotToStart}>voltar ao início</strong>
           <a>
-            <img />
+            <Facebook />
           </a>
           <a>
-            <img />
+            <Instagram />
           </a>
         </Grid>
       </Container>

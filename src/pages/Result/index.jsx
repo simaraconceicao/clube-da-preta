@@ -11,7 +11,6 @@ import ImgResult from "../../components/Result/ImgResult";
 import Shared from "../../components/Result/Shared";
 import { QuestionsContext } from "../../contexts/Questions";
 import Header from "../../components/Header";
-
 import textsApp from "../../texts/texts.json";
 
 const useStyles = makeStyles((theme) => ({
