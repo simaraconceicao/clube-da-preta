@@ -1,16 +1,14 @@
 import React, { useEffect, Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Header from "../../components/Header";
-import { useHistory } from "react-router-dom";
 import Title from "../../components/Questions/Title";
 import BtnAnswer from "../../components/Questions/BtnAnswer";
-import { QuestionsContext } from "../../contexts/Questions";
 
 const useStyles = makeStyles((theme) => ({
   gridTitle: {
     textAlign: "center",
-    height: 110,
+    height: 150,
+    marginTop: 16,
   },
   gridContainer: {
     paddingTop: 80,

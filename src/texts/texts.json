@@ -4,7 +4,7 @@
     "title": "Básico",
     "description": "O básico não se deixa errar, por isso está sempre vestido de peças chaves e atemporais. A calça jeans e o blazer de alfaiataria são itens indispensáveis em seus guarda-roupas. Ouso dizer que são os pioneiros do minimalismo que ao longo do tempo vem criando adeptos dos guarda roupas cápsulas, e das tendências de looks confortáveis, versáteis, atemporais e duradouros",
     "style": ["Esporte", "Esporte Fino", "Clássico", "Fashion"],
-    "img": "man.svg",
+    "img": { "man": "basico-masc.png", "woman": "basico-fem.png" },
     "imgHeader": "canto-resultado-laran-mobile.svg"
   },
   "classico": {
@@ -12,7 +12,7 @@
     "title": "Clássico",
     "description": "Os adeptos a esse estilo geralmente tem personalidades fortes e de liderança, a intenção é passar através de tecidos finos  como seda e alfaiataria, cortes retos e o perfeito caimento uma imagem de força e sofisticação. Amantes da alta costura, adeptos ao clássico são exemplo de bom gosto e bom senso pois não abrem mão do conforto para se sentirem elegantes.",
     "style": ["Esporte", "Esporte Fino", "Clássico", "Fashion"],
-    "img": { "man": "classico.svg", "woman": "classico.svg" },
+    "img": { "man": "classico-masc.png", "woman": "classico-fem.png" },
     "imgHeader": "logoClassico.svg",
     "color": "#FFFFFF",
     "backgroudColor": "#DCBEC9"
@@ -22,7 +22,7 @@
     "title": "Esporte",
     "description": "Você pode sair pela manhã vestido no seu tênis casual preferido, sua roupa de corte mais confortável e que suporte o movimento do seu dia a dia, e ainda assim estar preparado para uma balada a noite com o mesmo look, apenas incrementando seu look com seus acessórios ousados e sua jaqueta esportiva preferida. Esse estilo  permite que você brinque com cores, looks diferenciados como um vestido canelado e um tênis colorido. Ousadia e conforto marcam o esporte chique.",
     "style": ["Esporte", "Esporte Fino", "Clássico", "Fashion"],
-    "img": { "man": "man.svg", "woman": "man.svg" },
+    "img": { "man": "esporte-masc.png", "woman": "esporte-fem.png" },
     "imgHeader": "canto-resultado-laran-mobile.svg",
     "color": "#BE0027",
     "backgroudColor": "#F3B4A1"
@@ -32,7 +32,7 @@
     "title": "Casual",
     "description": "Você pode transitar do básico ao clássico, do clássico ao esportivo mudando apenas uma peça do seu look. Esse estilo te permite ser chique sem perder o conforto e ousadia, um sobreduto por cima de um look preto e um tênis casual te levam do trabalho ao Happy hour. Ousar nos adereços sutilmente te dá o poder de dominar qualquer ambiente sendo notado por sua praticidade e sofisticação.",
     "style": ["Esporte", "Esporte Fino", "Clássico", "Fashion"],
-    "img": { "man": "esporteFino.svg", "woman": "esporteFino.svg" },
+    "img": { "man": "casual-masc.png", "woman": "casual-fem.png" },
     "imgHeader": "logoEsporteFino.svg",
     "color": "#EDE7D9",
     "backgroudColor": "#D68072"
@@ -42,7 +42,7 @@
     "title": "Fashion",
     "description": "O estilo fashion é sinômino de liberdade e ausadia, estar atento às tendências e ao mesmo tempo não se curvar tanto à elas. É muito mais do que vestir mas falar através de suas roupas qualquer idéia que se queira. Por isso a mistura de estampas, a ousadia no uso e abuso das cores e acessórios tem muito a dizer sobre o fashionista que está sempre atento às novidade do mundo da moda mas nunca deixa de perder sua essência e autenticidade.",
     "style": ["Esporte", "Esporte Fino", "Clássico", "Fashion"],
-    "img": { "man": "fashion.svg", "woman": "fashion.svg" },
+    "img": { "man": "fashion-masc.svg", "woman": "fashion-fem.png" },
     "imgHeader": "logoFashion.svg",
     "color": "#F3B4A1",
     "backgroudColor": "#BF2256"
