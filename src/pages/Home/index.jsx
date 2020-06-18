@@ -3,10 +3,13 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
 import Button from "@material-ui/core/Button";
+import FormControl from "@material-ui/core/FormControl";
 import Header from "../../components/Header";
 import { QuestionsContext } from "../../contexts/Questions";
+import NativeSelect from "@material-ui/core/NativeSelect";
 import { useHistory } from "react-router-dom";
 import config from "../../config/config";
+import BtnSocialGroup from "../../components/BtnSocialGroup";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -77,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "-1",
     right: "44px",
     left: "-152px",
-    top: "-94px",
+    top: "-50px",
     backgroundColor: "rgba(255,255,255,0.01)",
     "& img": {
       width: "152%",
@@ -114,6 +117,19 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     zIndex: 1,
   },
+  FormControl: {
+    width: "100%",
+    margin: 4,
+  },
+  gridRedesSociais: {
+    position: "absolute",
+    bottom: "2%",
+    zIndex: 2,
+    right: 0,
+    [theme.breakpoints.up("lg")]: {
+      right: 115,
+    },
+  },
 }));
 
 const BootstrapInput = withStyles((theme) => ({
@@ -140,12 +156,16 @@ const BootstrapInput = withStyles((theme) => ({
 
 export default function Home() {
   const [isError, setIsError] = useState(false);
+  const [isErrorGenre, setIsErrorGenre] = useState(false);
   const [isValid, setIsValid] = useState(false);
+  const [isValidGenre, setIsValidGenre] = useState(false);
   const [email, setEmailState] = useState("");
-
+  const [genre, setGenre] = useState("");
   const [messageError, setmessageError] = useState("");
+  const [messageErrorGenre, setMessageErrorGenre] = useState("");
+
   const classes = useStyles();
-  const { addEmail, isEmail } = useContext(QuestionsContext);
+  const { addEmail, isEmail, addGenre } = useContext(QuestionsContext);
   const history = useHistory();
 
   const setEmail = (e) => {
@@ -153,7 +173,8 @@ export default function Home() {
     if (regex.test(e.target.value)) {
       setIsValid(true);
       setIsError(false);
-      setEmailState(e.target.value);
+      setEmailState(e.target.value.trim());
+      setmessageError("");
     } else {
       setIsError(true);
       setIsValid(false);
@@ -161,15 +182,28 @@ export default function Home() {
     }
   };
 
+  const validGenre = (e) => {
+    if (e !== "") {
+      setIsValidGenre(true);
+      setIsErrorGenre(false);
+      addGenre(e);
+      setMessageErrorGenre("");
+    } else {
+      setIsErrorGenre(true);
+      setIsValidGenre(false);
+      setMessageErrorGenre("Escolha um gênero");
+    }
+  };
+
   const goToQuestion = () => {
-    console.log(config);
     const send = {
       Email: email,
       MachineCode: config.MACHINE_CODE_LEADLO,
       EmailSequenceCode: config.EMAIL_SEQUNCE_CODE_LEADLO,
       SequenceLevelCode: config.SEQUENCE_LEVEL_CODE_LEADLO,
+      Genre: genre,
     };
-    if (isValid) {
+    if (isValid && isValidGenre) {
       fetch(`${config.URL_API_LEADLO}token=${config.TOKEN_API_LEADLO}`, {
         method: "POST",
         headers: {
@@ -192,9 +226,22 @@ export default function Home() {
           setmessageError("Ocorreu Algum problema com o servidor");
         });
     } else {
-      setmessageError("Email vazio ou inválido!");
-      setIsError(true);
+      if (!isValid) {
+        setmessageError("Email vazio ou inválido!");
+        setIsError(true);
+      }
+      if (!isValidGenre) {
+        setMessageErrorGenre("Escolha um gênero");
+        setIsErrorGenre(true);
+      }
     }
+  };
+
+  const handleChange = (event) => {
+    if (event.target.value !== "") {
+      setGenre(event.target.value);
+    }
+    validGenre(event.target.value);
   };
 
   useEffect(() => {
@@ -230,15 +277,32 @@ export default function Home() {
               Fashion. Que tal participar do nosso quiz para saber qual mais
               combina com você? Vem, vamos descobrir juntos!
             </p>
-
-            <BootstrapInput
-              fullWidth
-              label="Qual o seu Email?"
-              onChange={setEmail}
-            />
-            {isError && (
-              <span className={classes.spanError}>{messageError}</span>
-            )}
+            <FormControl className={classes.FormControl}>
+              <BootstrapInput
+                fullWidth
+                label="Qual o seu Email?"
+                onChange={setEmail}
+              />
+              {isError && (
+                <span className={classes.spanError}>{messageError}</span>
+              )}
+            </FormControl>
+            <FormControl className={classes.FormControl}>
+              <NativeSelect
+                value={genre}
+                onChange={handleChange}
+                input={<BootstrapInput />}
+              >
+                <option aria-label="None" value="">
+                  Gênero
+                </option>
+                <option value={2}>Masculino</option>
+                <option value={1}>Femenino</option>
+              </NativeSelect>
+              {isErrorGenre && (
+                <span className={classes.spanError}>{messageErrorGenre}</span>
+              )}
+            </FormControl>
             <br />
             <br />
             <Button
@@ -248,6 +312,9 @@ export default function Home() {
             >
               Vamos descobrir?
             </Button>
+            <Grid item sm={2} className={classes.gridRedesSociais}>
+              <BtnSocialGroup />
+            </Grid>
           </Grid>
           <Grid item lg={2} className={classes.gridImg}>
             <img src="man.svg" />

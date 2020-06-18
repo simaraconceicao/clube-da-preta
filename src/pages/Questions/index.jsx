@@ -4,11 +4,10 @@ import Grid from "@material-ui/core/Grid";
 import Header from "../../components/Header";
 import { useHistory } from "react-router-dom";
 import View from "../../components/Questions/View";
+import BtnSocialGroup from "../../components/BtnSocialGroup";
 import { QuestionsContext } from "../../contexts/Questions";
 import Container from "@material-ui/core/Container";
 import QuestionsApp from "../../texts/texts.json";
-import Facebook from "@material-ui/icons/Facebook";
-import Instagram from "@material-ui/icons/Instagram";
 
 const useStyles = makeStyles((theme) => ({
   questions: {
@@ -17,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#646464",
     height: "100vh",
     maxHeight: "100%",
+    maxLines: "100%",
     background:
       "#f27253 url('background-questions-mobile.svg') no-repeat  6% 50%",
     backgroundSize: "202% 400%",
@@ -100,7 +100,6 @@ export default function Question() {
   };
 
   useEffect(() => {
-    console.log(0);
     if (amountQuestion !== 0) {
       setNowQuestion(nowQuestion + 1);
       sessionStorage.setItem("nowQuestion", nowQuestion + 1);
@@ -145,12 +144,9 @@ export default function Question() {
           style={{ color: color }}
         >
           <strong onClick={gotToStart}>voltar ao início</strong>
-          <a>
-            <Facebook />
-          </a>
-          <a>
-            <Instagram />
-          </a>
+          <Grid item xs={4} lg={2}>
+            <BtnSocialGroup />
+          </Grid>
         </Grid>
       </Container>
     </Grid>

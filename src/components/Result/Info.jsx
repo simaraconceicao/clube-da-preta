@@ -19,15 +19,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Info({ dados }) {
+export default function Info({ dados, color }) {
   const classes = useStyles();
   return (
     <p>
       <p
         className={classes.description}
+        style={{ color: color }}
         dangerouslySetInnerHTML={{ __html: dados.join("<br/>") }}
       ></p>
-      <span className={classes.descriptionLg}>
+      <span className={classes.descriptionLg} style={{ color: color }}>
         <span
           style={{ paddingRight: 46 }}
           dangerouslySetInnerHTML={{ __html: dados.slice(0, 2).join("<br/>") }}

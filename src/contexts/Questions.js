@@ -37,7 +37,6 @@ function QuestionsProvider({ children }) {
 
   function isAnswerdAllQuestion() {
     const finish = sessionStorage.getItem("finish");
-    console.log(finish);
     return finish;
   }
 
@@ -51,7 +50,6 @@ function QuestionsProvider({ children }) {
     const win = score.filter(
       (sc) => sc.score == Math.max.apply(Math, separete)
     );
-    console.log(win);
     return win[0].id;
   }
 
@@ -146,6 +144,18 @@ function QuestionsProvider({ children }) {
     ];
   }
 
+  function addGenre(genre) {
+    sessionStorage.setItem("genre", parseInt(genre));
+  }
+
+  function getGenre() {
+    const genre = sessionStorage.getItem("genre");
+    if (genre !== null) {
+      return genre;
+    }
+    return -1;
+  }
+
   return (
     <QuestionsContext.Provider
       value={{
@@ -158,6 +168,8 @@ function QuestionsProvider({ children }) {
         isAnswerdAllQuestion,
         getNowQuestion,
         addScoreBoard,
+        addGenre,
+        getGenre,
       }}
     >
       {children}

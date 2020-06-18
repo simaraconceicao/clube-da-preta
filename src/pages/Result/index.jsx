@@ -87,22 +87,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function geTitleByResult(result) {
-  switch (result) {
-    case textsApp.casual.id:
-      return <Title title={textsApp.casual.title} />;
-    case textsApp.classico.id:
-      return <Title title={textsApp.classico.title} />;
-    case textsApp.esporte.id:
-      return <Title title={textsApp.esporte.title} />;
-    case textsApp.fashion.id:
-      return <Title title={textsApp.fashion.title} />;
-
-    default:
-      return <Title title={textsApp.basico.title} />;
-  }
-}
-
 function getHeaderByResult(result) {
   switch (result) {
     case textsApp.casual.id:
@@ -119,36 +103,6 @@ function getHeaderByResult(result) {
   }
 }
 
-function getImgByResult(result) {
-  switch (result) {
-    case textsApp.casual.id:
-      return <ImgResult img={textsApp.casual.img} />;
-    case textsApp.classico.id:
-      return <ImgResult img={textsApp.classico.img} />;
-    case textsApp.esporte.id:
-      return <ImgResult img={textsApp.esporte.img} />;
-    case textsApp.fashion.id:
-      return <ImgResult img={textsApp.fashion.img} />;
-    default:
-      return <ImgResult img={textsApp.basico.img} />;
-  }
-}
-
-function getStyleByResult(result) {
-  switch (result) {
-    case textsApp.casual.id:
-      return <Info dados={textsApp.casual.style} />;
-    case textsApp.classico.id:
-      return <Info dados={textsApp.classico.style} />;
-    case textsApp.esporte.id:
-      return <Info dados={textsApp.esporte.style} />;
-    case textsApp.fashion.id:
-      return <Info dados={textsApp.fashion.style} />;
-    default:
-      return <Info dados={textsApp.basico.style} />;
-  }
-}
-
 export default function Result() {
   const classes = useStyles();
   const {
@@ -156,10 +110,10 @@ export default function Result() {
     cleanAllSession,
     isAnswerdAllQuestion,
     isEmail,
+    getGenre,
   } = useContext(QuestionsContext);
   const history = useHistory();
   const result = getResult();
-
   const gotToStart = () => {
     cleanAllSession();
     history.push("/");
@@ -198,6 +152,20 @@ export default function Result() {
         );
     }
   };
+  function getStyleByResult(result) {
+    switch (result) {
+      case textsApp.casual.id:
+        return <Info dados={textsApp.casual.style} color={getColor()} />;
+      case textsApp.classico.id:
+        return <Info dados={textsApp.classico.style} color={getColor()} />;
+      case textsApp.esporte.id:
+        return <Info dados={textsApp.esporte.style} color={getColor()} />;
+      case textsApp.fashion.id:
+        return <Info dados={textsApp.fashion.style} color={getColor()} />;
+      default:
+        return <Info dados={textsApp.basico.style} color={getColor()} />;
+    }
+  }
 
   const geTitleByResult = (result) => {
     switch (result) {
@@ -267,6 +235,43 @@ export default function Result() {
         return textsApp.fashion.imgHeader;
       default:
         return textsApp.basico.imgHeader;
+    }
+  };
+
+  const getImgByResult = (result) => {
+    const genre = getGenre();
+    switch (result) {
+      case textsApp.casual.id:
+        return genre === 2 ? (
+          <ImgResult img={textsApp.casual.img.man} />
+        ) : (
+          <ImgResult img={textsApp.casual.img.woman} />
+        );
+      case textsApp.classico.id:
+        return genre === 2 ? (
+          <ImgResult img={textsApp.classico.img.man} />
+        ) : (
+          <ImgResult img={textsApp.classico.img.woman} />
+        );
+      case textsApp.esporte.id:
+        return genre === 2 ? (
+          <ImgResult img={textsApp.esporte.img.man} />
+        ) : (
+          <ImgResult img={textsApp.esporte.img.woman} />
+        );
+      case textsApp.fashion.id:
+        return genre === 2 ? (
+          <ImgResult img={textsApp.fashion.img.man} />
+        ) : (
+          <ImgResult img={textsApp.fashion.img.woman} />
+        );
+
+      default:
+        return genre === 2 ? (
+          <ImgResult img={textsApp.basico.img.man} />
+        ) : (
+          <ImgResult img={textsApp.basico.img.woman} />
+        );
     }
   };
 
