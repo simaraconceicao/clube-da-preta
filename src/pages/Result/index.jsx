@@ -175,8 +175,6 @@ export default function Result() {
   const history = useHistory();
   const result = getResult();
 
-  console.log("result", result);
-
   const gotToStart = () => {
     cleanAllSession();
     history.push("/");
@@ -193,7 +191,6 @@ export default function Result() {
   }, []);
 
   const getBackgroundColor = () => {
-    console.log(textsApp.fashion);
     switch (result) {
       case textsApp.casual.id:
         return textsApp.casual.backgroudColor;

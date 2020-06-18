@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import Header from "../../components/Header";
 import { QuestionsContext } from "../../contexts/Questions";
 import { useHistory } from "react-router-dom";
-
+import config from "../../config/config";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -18,13 +18,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fdeec9",
     maxHeight: "100%",
     overflow: "hidden",
-
-    //background: "#fdeec9 url('woman.svg') no-repeat -80px -92%",
-    //backgroundSize: "560px 753px",
-    [theme.breakpoints.up("md")]: {
-      //background: "#fdeec9 url('woman.svg') no-repeat -80px -92%",
-    },
-
     [theme.breakpoints.up("lg")]: {
       position: "relative",
     },
@@ -148,6 +141,8 @@ const BootstrapInput = withStyles((theme) => ({
 export default function Home() {
   const [isError, setIsError] = useState(false);
   const [isValid, setIsValid] = useState(false);
+  const [email, setEmailState] = useState("");
+
   const [messageError, setmessageError] = useState("");
   const classes = useStyles();
   const { addEmail, isEmail } = useContext(QuestionsContext);
@@ -156,9 +151,9 @@ export default function Home() {
   const setEmail = (e) => {
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (regex.test(e.target.value)) {
-      addEmail(e.target.value);
       setIsValid(true);
       setIsError(false);
+      setEmailState(e.target.value);
     } else {
       setIsError(true);
       setIsValid(false);
@@ -167,8 +162,35 @@ export default function Home() {
   };
 
   const goToQuestion = () => {
+    console.log(config);
+    const send = {
+      Email: email,
+      MachineCode: config.MACHINE_CODE_LEADLO,
+      EmailSequenceCode: config.EMAIL_SEQUNCE_CODE_LEADLO,
+      SequenceLevelCode: config.SEQUENCE_LEVEL_CODE_LEADLO,
+    };
     if (isValid) {
-      history.push("/perguntas");
+      fetch(`${config.URL_API_LEADLO}token=${config.TOKEN_API_LEADLO}`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: config.AUTHORIZATION,
+        },
+        body: JSON.stringify(send),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((result) => {
+          if (result.StatusCode === 200) {
+            addEmail(email);
+            history.push("/perguntas");
+          }
+        })
+        .catch((e) => {
+          setmessageError("Ocorreu Algum problema com o servidor");
+        });
     } else {
       setmessageError("Email vazio ou inválido!");
       setIsError(true);
