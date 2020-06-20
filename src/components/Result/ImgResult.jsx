@@ -4,18 +4,17 @@ import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   gridImg: {
-    color: "#646464",
-    position: "absolute",
-    zIndex: "-1",
-    "& img": {
-      width: "150%",
-      right: "-61%",
-      top: "89px",
+    [theme.breakpoints.up("md")]: {
       position: "absolute",
+      zIndex: "-1",
+    },
+    "& img": {
+      width: "110%",
       [theme.breakpoints.up("md")]: {
         top: "-93px",
         right: "-19%",
         width: "77%",
+        position: "absolute",
       },
     },
   },

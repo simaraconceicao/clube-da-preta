@@ -94,6 +94,8 @@ export default function Question() {
     //pega as poerguntas na session
     const cacheAnswerd = getAnswerd();
     cacheAnswerd.push(question);
+    console.log(question, cacheAnswerd);
+
     setAnswerds(cacheAnswerd);
   };
 

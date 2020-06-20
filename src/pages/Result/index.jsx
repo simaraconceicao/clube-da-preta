@@ -12,14 +12,16 @@ import Shared from "../../components/Result/Shared";
 import { QuestionsContext } from "../../contexts/Questions";
 import Header from "../../components/Header";
 import textsApp from "../../texts/texts.json";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   questions: {
     paddingLeft: 16,
     paddingRight: 16,
     color: "#646464",
-    height: "100vh",
-    maxHeight: "100vh",
+    height: "160vh",
+    maxHeight: "130%",
     margin: 0,
     position: "relative",
     overflow: "hidden",
@@ -27,6 +29,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       paddingLeft: 24,
       paddingRight: 24,
+    },
+    [theme.breakpoints.up("sm")]: {
+      paddingLeft: 24,
+      paddingRight: 24,
+      height: "100vh",
+      maxHeight: "100%",
     },
   },
   gridContainer: {
@@ -62,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
   gridHeader: {
     display: "none",
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sm")]: {
       display: "flex",
     },
   },
@@ -105,6 +113,8 @@ function getHeaderByResult(result) {
 
 export default function Result() {
   const classes = useStyles();
+  const theme = useTheme();
+
   const {
     getResult,
     cleanAllSession,
@@ -118,6 +128,8 @@ export default function Result() {
     cleanAllSession();
     history.push("/");
   };
+
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const getDescriptionByResult = (result) => {
     switch (result) {
@@ -288,16 +300,16 @@ export default function Result() {
         <div className={classes.gridHeader}>
           <Header />
         </div>
-        {getHeaderByResult(result)}
+
         <Grid
           container
           direction="row"
           alignItems="flex-start"
           className={classes.gridContainer}
         >
-          {getImgByResult(result)}
+          {!matches && getImgByResult(result)}
 
-          <Grid item xs={12} className={classes.gridTitle}>
+          <Grid item xs={12} sm={6} className={classes.gridTitle}>
             {geTitleByResult(result)}
           </Grid>
           <Grid
@@ -340,8 +352,19 @@ export default function Result() {
               <Shared />
             </Grid>
           </Grid>
-
-          <img src={getLogo()} />
+          {matches && (
+            <Grid item container xs={12} direction="row">
+              {getImgByResult(result)}
+            </Grid>
+          )}
+          <br />
+          {matches && (
+            <Grid item container xs={12} direction="row" justify="center">
+              <img src={getLogo()} />
+            </Grid>
+          )}
+          <br />
+          {!matches && <img src={getLogo()} />}
         </Grid>
         <footer className={classes.footer}>
           <strong onClick={gotToStart}>refazer o teste</strong>
