@@ -42,7 +42,7 @@
     "title": "Fashion",
     "description": "O estilo fashion é sinômino de liberdade e ausadia, estar atento às tendências e ao mesmo tempo não se curvar tanto à elas. É muito mais do que vestir mas falar através de suas roupas qualquer idéia que se queira. Por isso a mistura de estampas, a ousadia no uso e abuso das cores e acessórios tem muito a dizer sobre o fashionista que está sempre atento às novidade do mundo da moda mas nunca deixa de perder sua essência e autenticidade.",
     "style": ["Esporte", "Esporte Fino", "Clássico", "Fashion"],
-    "img": { "man": "fashion-mas.svg", "woman": "fashion-fem.png" },
+    "img": { "man": "fashion-mas.png", "woman": "fashion-fem.png" },
     "imgHeader": "logoFashion.svg",
     "color": "#F3B4A1",
     "backgroudColor": "#BF2256"
