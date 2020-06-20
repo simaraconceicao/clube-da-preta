@@ -43,7 +43,17 @@ export default function Shared({ title }) {
 
   const sharedTwitter = () => {
     let url = `https://twitter.com/intent/tweet?url${TwitterShared.URL}&text=${TwitterShared.content}&via=${TwitterShared.via}`;
-    window.open(url, "TWITTER", "width=800,height=600");
+    window.open(url, "TWITTER", "width=600,height=400");
+    return false;
+  };
+
+  const sharedFacebook = () => {
+    let url = `https://www.facebook.com/sharer/sharer.php?u=${config.URL_BTN_SHARED}/resultado`;
+    window.open(
+      url,
+      "Facebook - Club da Preta",
+      "width=600,height=400,scrollbars=no"
+    );
     return false;
   };
 
@@ -56,18 +66,9 @@ export default function Shared({ title }) {
     >
       <p>COMPARTILHE SEU RESULTADO</p>
       <Grid item container justify="center" className={classes.imgShared}>
-        <Share href={config.URL_BTN_SHARED}>
-          {({ handleClick, loading }) => (
-            <a
-              className={classes.aLink}
-              disable={loading}
-              onClick={handleClick}
-            >
-              <Facebook />
-            </a>
-          )}
-        </Share>
-
+        <Link className={classes.aLink} onClick={sharedFacebook}>
+          <Facebook />
+        </Link>
         <Link className={classes.aLink} onClick={sharedTwitter}>
           <Twitter />
         </Link>
