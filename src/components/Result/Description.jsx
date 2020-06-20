@@ -17,7 +17,6 @@ export default function Description({ description, color }) {
   const classes = useStyles();
   const matches = useMediaQuery("(min-width:600px)");
   let text = description;
-  console.log(color);
   if (matches) {
     text = description.substr(
       0,

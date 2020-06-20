@@ -25,7 +25,7 @@ export default function HeaderResult({ img }) {
 
   return (
     <Grid container direction="row" className={classes.gridHeader}>
-      <img src={img} />
+      <img alt="logo resultado quizz" src={img} />
     </Grid>
   );
 }

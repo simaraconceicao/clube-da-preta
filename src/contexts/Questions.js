@@ -48,7 +48,7 @@ function QuestionsProvider({ children }) {
     });
 
     const win = score.filter(
-      (sc) => sc.score == Math.max.apply(Math, separete)
+      (sc) => sc.score === Math.max.apply(Math, separete)
     );
     return win[0].id;
   }
@@ -151,7 +151,7 @@ function QuestionsProvider({ children }) {
   function getGenre() {
     const genre = sessionStorage.getItem("genre");
     if (genre !== null) {
-      return genre;
+      return parseInt(genre);
     }
     return -1;
   }

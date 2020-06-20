@@ -1,6 +1,4 @@
 import React, { Fragment } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import Facebook from "@material-ui/icons/Facebook";
 import Instagram from "@material-ui/icons/Instagram";
 
@@ -11,6 +9,7 @@ export default function BtnSocialGroup() {
         href="https://www.facebook.com/clubedapreta/"
         target="_blank"
         alt="Facebook Club da Preta"
+        rel="noopener noreferrer"
       >
         <Facebook />
       </a>
@@ -18,6 +17,7 @@ export default function BtnSocialGroup() {
         href="https://www.instagram.com/clubedapreta/"
         target="_blank"
         alt="Instagram Club da Preta"
+        rel="noopener noreferrer"
       >
         <Instagram />
       </a>

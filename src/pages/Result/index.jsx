@@ -192,6 +192,7 @@ export default function Result() {
       //onde parei ? volte para onde eu parei
       history.push("/perguntas");
     }
+    // react-hooks/exhaustive-deps
   }, []);
 
   const getBackgroundColor = () => {
