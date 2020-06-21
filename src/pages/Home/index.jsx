@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fdeec9",
     maxHeight: "100%",
     overflow: "hidden",
+    "& a": {
+      color: "#b10202",
+    },
     [theme.breakpoints.up("lg")]: {
       position: "relative",
     },
@@ -65,14 +68,20 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgba(255,255,255,0.01)",
     position: "absolute",
     zIndex: "-1",
+    width: "100%",
+    "& img": {
+      position: "absolute",
+      width: "100%",
+    },
     [theme.breakpoints.up("md")]: {
       display: "flex",
-      "& img": {
-        right: "0",
-        left: 220,
-        position: "absolute",
-        top: "-293px",
-      },
+      right: "-48%",
+      top: -117,
+    },
+    [theme.breakpoints.up("lg")]: {
+      display: "flex",
+      right: 0,
+      top: 17,
     },
   },
   gridImgWoman: {
@@ -83,32 +92,30 @@ const useStyles = makeStyles((theme) => ({
     top: "-50px",
     backgroundColor: "rgba(255,255,255,0.01)",
     "& img": {
-      width: "152%",
+      width: "100%",
     },
     [theme.breakpoints.up("sm")]: {
       "& img": {
         position: "absolute",
-        top: -10,
-        right: 0,
-        left: "-37%",
-        width: "110%",
+        top: -139,
+        left: "0%",
+        width: "70%",
       },
     },
     [theme.breakpoints.up("md")]: {
       "& img": {
         position: "absolute",
-        top: -210,
+        top: -99,
         right: 0,
-        left: "-76%",
-        width: "160%",
+        left: "-26%",
+        width: "100%",
       },
       [theme.breakpoints.up("lg")]: {
         "& img": {
           position: "absolute",
-          top: -286,
-          right: 0,
-          left: "-8%",
-          width: 999,
+          top: 70,
+          left: 103,
+          width: "100%",
         },
       },
     },
@@ -170,7 +177,7 @@ export default function Home() {
 
   const setEmail = (e) => {
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (regex.test(e.target.value)) {
+    if (regex.test(e.target.value.trim())) {
       setIsValid(true);
       setIsError(false);
       setEmailState(e.target.value.trim());
@@ -231,7 +238,7 @@ export default function Home() {
         setIsError(true);
       }
       if (!isValidGenre) {
-        setMessageErrorGenre("Escolha um gênero");
+        setMessageErrorGenre("Escolha como você se identifica");
         setIsErrorGenre(true);
       }
     }
@@ -249,6 +256,12 @@ export default function Home() {
       history.push("/perguntas");
     }
   }, []);
+
+  const gotAhead = (e) => {
+    if (e.key === "Enter") {
+      goToQuestion();
+    }
+  };
 
   return (
     <Grid container className={classes.home}>
@@ -280,8 +293,10 @@ export default function Home() {
             <FormControl className={classes.FormControl}>
               <BootstrapInput
                 fullWidth
-                label="Qual o seu Email?"
-                onChange={setEmail}
+                placeholder="Qual o seu Email?"
+                //onChange={setEmail}
+                onKeyPress={(e) => gotAhead(e)}
+                onBlur={setEmail}
               />
               {isError && (
                 <span className={classes.spanError}>{messageError}</span>
@@ -290,14 +305,15 @@ export default function Home() {
             <FormControl className={classes.FormControl}>
               <NativeSelect
                 value={genre}
+                onKeyPress={gotAhead}
                 onChange={handleChange}
                 input={<BootstrapInput />}
               >
                 <option aria-label="None" value="">
-                  Gênero
+                  Como você se identifica?
                 </option>
                 <option value={2}>Masculino</option>
-                <option value={1}>Femenino</option>
+                <option value={1}>Feminino</option>
               </NativeSelect>
               {isErrorGenre && (
                 <span className={classes.spanError}>{messageErrorGenre}</span>
@@ -316,7 +332,7 @@ export default function Home() {
               <BtnSocialGroup />
             </Grid>
           </Grid>
-          <Grid item lg={2} className={classes.gridImg}>
+          <Grid item md={12} lg={4} className={classes.gridImg}>
             <img src="man.svg" />
           </Grid>
         </Grid>

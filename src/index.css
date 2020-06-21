@@ -16,6 +16,9 @@ h5 {
   color: #f27253;
   opacity: 1;
 }
+a {
+  color: #fff;
+}
 p,
 span {
   font-family: GothamHTF-Light;
