@@ -12,6 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {
     paddingTop: 80,
+    position: "relative",
+    zIndex: 2,
     [theme.breakpoints.up("md")]: {
       paddingTop: "22%",
     },
