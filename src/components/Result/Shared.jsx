@@ -21,6 +21,7 @@ const useStyles = makeStyles(() => ({
 
   aLink: {
     cursor: "pointer",
+    color: "#646464",
   },
 }));
 

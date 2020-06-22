@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     [theme.breakpoints.up("lg")]: {
-      top: -174,
+      top: -219,
       left: 40,
       "& img": {
         width: "90%",
@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     [theme.breakpoints.up("lg")]: {
-      left: 859,
+      left: 959,
       bottom: 0,
       "& img": {
         width: "auto%",
