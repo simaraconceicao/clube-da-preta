@@ -5,7 +5,9 @@
     "description": "O básico não se deixa errar, por isso está sempre vestido de peças chaves e atemporais. A calça jeans e o blazer de alfaiataria são itens indispensáveis em seus guarda-roupas. Ouso dizer que são os pioneiros do minimalismo que ao longo do tempo vem criando adeptos dos guarda roupas cápsulas, e das tendências de looks confortáveis, versáteis, atemporais e duradouros",
     "style": ["Esporte", "Esporte Fino", "Clássico", "Fashion"],
     "img": { "man": "basico-mas.png", "woman": "basico-fem.png" },
-    "imgHeader": "canto-resultado-laran-mobile.svg"
+    "imgHeader": "logo.svg",
+    "color": "#646464",
+    "backgroudColor": "#F7F0F1"
   },
   "classico": {
     "id": 2,
@@ -23,7 +25,7 @@
     "description": "Você pode sair pela manhã vestido no seu tênis casual preferido, sua roupa de corte mais confortável e que suporte o movimento do seu dia a dia, e ainda assim estar preparado para uma balada a noite com o mesmo look, apenas incrementando seu look com seus acessórios ousados e sua jaqueta esportiva preferida. Esse estilo  permite que você brinque com cores, looks diferenciados como um vestido canelado e um tênis colorido. Ousadia e conforto marcam o esporte chique.",
     "style": ["Esporte", "Esporte Fino", "Clássico", "Fashion"],
     "img": { "man": "esporte-mas.png", "woman": "esporte-fem.png" },
-    "imgHeader": "canto-resultado-laran-mobile.svg",
+    "imgHeader": "logo.svg",
     "color": "#BE0027",
     "backgroudColor": "#F3B4A1"
   },

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import Facebook from "@material-ui/icons/Facebook";
 import Twitter from "@material-ui/icons/Twitter";
+import { QuestionsContext } from "../../contexts/Questions";
 import config from "../../config/config";
-import { Share } from "react-facebook";
 
 const useStyles = makeStyles(() => ({
   shared: {
@@ -25,14 +25,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function Shared({ title }) {
+export default function Shared({ stilo, description, title }) {
   const classes = useStyles();
+  const [uri, setUri] = useState("");
+  const { getUriToShared } = useContext(QuestionsContext);
 
-  const TwitterShared = {
-    URL: config.URL_BTN_SHARED,
-    content: "Clube da Preta",
-    via: "ClubedaPreta",
-  };
   window.fbAsyncInit = function () {
     window.FB.init({
       appId: `${config.ID_FACEBOOK_APP}`,
@@ -43,20 +40,29 @@ export default function Shared({ title }) {
   };
 
   const sharedTwitter = () => {
-    let url = `https://twitter.com/intent/tweet?url${TwitterShared.URL}&text=${TwitterShared.content}&via=${TwitterShared.via}`;
+    let url = `https://twitter.com/intent/tweet?url${
+      config.URL_BTN_SHARED
+    }&text=${description}&via=${"clubdapreta"}`;
     window.open(url, "TWITTER", "width=600,height=400");
     return false;
   };
 
   const sharedFacebook = () => {
-    let url = `https://www.facebook.com/sharer/sharer.php?u=${config.URL_BTN_SHARED}/resultado`;
+    var dt = Math.random(1, 100);
+    let url = `https://www.facebook.com/sharer/sharer.php?u=${config.URL_BTN_SHARED}/resultado?url=${dt}&${uri}`;
     window.open(
       url,
       "Facebook - Club da Preta",
       "width=600,height=400,scrollbars=no"
     );
+
     return false;
   };
+
+  useEffect(() => {
+    setUri(getUriToShared());
+    // react-hooks/exhaustive-deps
+  }, [stilo]);
 
   return (
     <Grid

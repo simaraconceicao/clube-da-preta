@@ -9,7 +9,7 @@ function QuestionsProvider({ children }) {
 
   function addEmail(email) {
     setEmail(email);
-    sessionStorage.setItem("email", JSON.stringify(email));
+    sessionStorage.setItem("email", email);
   }
 
   function addAnswerd(params) {
@@ -50,7 +50,7 @@ function QuestionsProvider({ children }) {
     const win = score.filter(
       (sc) => sc.score === Math.max.apply(Math, separete)
     );
-    return win[0].id;
+    return parseInt(win[0].id);
   }
 
   function getNowQuestion() {
@@ -156,6 +156,16 @@ function QuestionsProvider({ children }) {
     return -1;
   }
 
+  function getUriToShared() {
+    const finish = sessionStorage.getItem("finish");
+    const nowQuestion = sessionStorage.getItem("nowQuestion");
+    const answerds = true;
+    const genre = sessionStorage.getItem("genre");
+    const email = sessionStorage.getItem("email");
+    const stilo = sessionStorage.getItem("stilo");
+    return `resultado=ok&nowQuestion=${nowQuestion}&answerds=${answerds}&genre=${genre}&email=${email}&stilo=${stilo}&finish=${finish}`;
+  }
+
   return (
     <QuestionsContext.Provider
       value={{
@@ -170,6 +180,7 @@ function QuestionsProvider({ children }) {
         addScoreBoard,
         addGenre,
         getGenre,
+        getUriToShared,
       }}
     >
       {children}
