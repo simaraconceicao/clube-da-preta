@@ -10,6 +10,8 @@ import NativeSelect from "@material-ui/core/NativeSelect";
 import { useHistory } from "react-router-dom";
 import config from "../../config/config";
 import BtnSocialGroup from "../../components/BtnSocialGroup";
+import Helmet from "react-helmet";
+
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
   },
   p: {
     textAlign: "center",
+    color: "#170909",
+    fontWeight: 800,
     letterSpacing: 1.0,
     lineHeight: 1.2,
     [theme.breakpoints.up("md")]: {
@@ -47,7 +51,10 @@ const useStyles = makeStyles((theme) => ({
   },
   btn: {
     color: "#fff",
-    width: 170,
+    "& span": {
+      fontWeight: 800,
+    },
+    minWidth: 170,
     height: 40,
     backgroundColor: "#f27253",
     textTransform: "capitalize",
@@ -265,6 +272,11 @@ export default function Home() {
 
   return (
     <Grid container className={classes.home}>
+      <Helmet>
+        <title>Quiz: Qual seu estilo? Club da Preta</title>
+        <meta name="description" content="Quiz: Qual seu estilo?" />
+        <style>{"body { background-color: #fdeec9; }"}</style>
+      </Helmet>
       <Header />
       <Grid container alignItems="center" direction="column">
         <Grid

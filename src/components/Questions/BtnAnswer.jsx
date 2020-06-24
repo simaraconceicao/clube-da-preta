@@ -4,18 +4,21 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   btn: {
-    color: "#fff",
-    backgroundColor: "#f27253",
-    border: "#fff 1px solid",
-    boxShadow: 0,
-    minWidth: 200,
-    height: 40,
-
+    color: "#f27253",
+    backgroundColor: "#fdeec9",
+    border: "#f27253 1px solid",
+    boxShadow: "0px",
+    minWidth: "100%",
+    minHeight: 40,
     textTransform: "capitalize",
+    fontWeight: 900,
     "&:hover": {
-      backgroundColor: "#f27200",
+      backgroundColor: "#fdeec9",
     },
     [theme.breakpoints.up("sm")]: {},
+    [theme.breakpoints.up("lg")]: {
+      minWidth: "80%",
+    },
   },
 }));
 

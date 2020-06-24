@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Header from "../../components/Header";
@@ -6,123 +6,93 @@ import { useHistory } from "react-router-dom";
 import View from "../../components/Questions/View";
 import BtnSocialGroup from "../../components/BtnSocialGroup";
 import { QuestionsContext } from "../../contexts/Questions";
-import Container from "@material-ui/core/Container";
+import Helmet from "react-helmet";
 import QuestionsApp from "../../texts/texts.json";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   questions: {
-    paddingLeft: 16,
-    paddingRight: 16,
     color: "#646464",
-    height: "100vh",
-    maxHeight: "100%",
     backgroundColor: "#f27253",
-    overflow: "hidden",
+    position: "relative",
+    zIndex: 3,
   },
   footer: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
     bottom: 20,
-    position: "absolute",
-    zIndex: 2,
+    color: "#fff",
     "& strong:first-child": {
       cursor: "pointer",
     },
-    [theme.breakpoints.up("md")]: {
-      bottom: 10,
-    },
+    [theme.breakpoints.up("md")]: {},
   },
 
   imgheaderIlust: {
-    width: "100%",
     position: "absolute",
-    overflow: "hidden",
-    display: "flex",
-    zIndex: "1",
-    top: -6,
+    top: -146,
     left: 0,
-    justifyContent: "center",
-    "& img": {
-      width: "147%",
-    },
+
     [theme.breakpoints.up("sm")]: {
-      top: -68,
+      top: -48,
       left: 0,
     },
+
     [theme.breakpoints.up("md")]: {
-      "& img": {
-        width: "290%",
-      },
+      top: -14,
     },
 
     [theme.breakpoints.up("lg")]: {
-      top: -219,
-      left: 40,
-      "& img": {
-        width: "90%",
-      },
+      top: -82,
+      left: "auto",
     },
   },
-  ldIlust: {
+  ldIlustAbsolute: {
     position: "absolute",
-    overflow: "hidden",
-    zIndex: 1,
-    right: -122,
-    bottom: -12,
     width: "100%",
-    "& img": {
-      width: "80%",
-    },
+    marginTop: 12,
+  },
+  ldIlust: {
+    width: "50%",
+    bottom: 0,
+    right: 0,
+    position: "absolute",
+    bottom: -331,
     [theme.breakpoints.up("sm")]: {
-      right: -246,
+      bottom: -592,
+      width: "60%",
     },
-
     [theme.breakpoints.up("md")]: {
-      right: -519,
-      bottom: 0,
-      "& img": {
-        width: "50%",
-      },
+      bottom: -652,
+      width: "50%",
     },
     [theme.breakpoints.up("lg")]: {
-      left: 959,
-      bottom: 0,
-      "& img": {
-        width: "auto%",
-      },
+      top: -43,
+      left: "auto",
+      width: "30%",
+      right: 128,
     },
   },
 
   leIlust: {
-    position: "absolute",
-    overflow: "hidden",
-    zIndex: 1,
+    width: "50%",
     bottom: 0,
-    top: 80,
-    width: "100%",
-    left: -80,
-    "& img": {
-      width: "100%",
-    },
+    left: -44,
+    position: "absolute",
+    bottom: -331,
     [theme.breakpoints.up("sm")]: {
-      top: 23,
+      bottom: -652,
+      width: "60%",
       left: -104,
-      "& img": {
-        width: "70%",
-      },
     },
-    [theme.breakpoints.up("sm")]: {
-      "& img": {
-        width: "auto",
-      },
+    [theme.breakpoints.up("md")]: {
+      bottom: -652,
+      width: "60%",
+      left: -104,
     },
     [theme.breakpoints.up("lg")]: {
-      top: 50,
-      left: -274,
-      "& img": {
-        width: "auto",
-      },
+      left: -278,
+      width: "30%",
+      bottom: -552,
     },
   },
 }));
@@ -130,7 +100,15 @@ const useStyles = makeStyles((theme) => ({
 export default function Question() {
   const classes = useStyles();
   const color = "#f27253";
-  const colorHeader = "#fff";
+  let colorHeader = "#f27253";
+  const theme = useTheme();
+
+  const matches = useMediaQuery(theme.breakpoints.up("lg"));
+
+  if (matches) {
+    colorHeader = "#fff";
+  }
+
   const [questions, setQuestions] = useState([]);
   const [nowQuestion, setNowQuestion] = useState(1);
   const [amountQuestion, setAmountQuestion] = useState(0);
@@ -197,47 +175,68 @@ export default function Question() {
   };
 
   return (
-    <Grid
-      container
-      direction="row"
-      justify="center"
-      className={classes.questions}
-    >
-      <div className={classes.imgheaderIlust}>
-        <img src="imagemheader.png" alt="Imagem de cima" />
-      </div>
-      <Container maxWidth="lg" style={{ position: "relative", zIndex: 1 }}>
-        <Grid item xs={12}>
+    <Fragment>
+      <Helmet>
+        <title>Responda as perguntas - Club da Preta</title>
+        <meta name="description" content="Quiz: Qual seu estilo?" />
+        <style>{"body { background-color: #f27253; }"}</style>
+      </Helmet>
+
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        className={classes.questions}
+      >
+        <Grid container justify="center" className={classes.imgheaderIlust}>
+          <img src="imagemheader.png" alt="Imagem de cima" />
+        </Grid>
+        <Grid item xs={12} md={12} lg={12} style={{ position: "relative" }}>
           <Header color={colorHeader} />
         </Grid>
-        {questions.map((question) => (
-          <View
-            key={question.id}
-            question={question}
-            show={question.id == nowQuestion}
-            onRealQuestion={(e) => getRealQuestion(e)}
-          />
-        ))}
+        <Grid
+          item
+          xs={12}
+          md={12}
+          lg={12}
+          style={{ position: "relative", zIndex: 2 }}
+        >
+          {questions.map((question) => (
+            <View
+              key={question.id}
+              question={question}
+              show={question.id == nowQuestion}
+              onRealQuestion={(e) => getRealQuestion(e)}
+            />
+          ))}
+        </Grid>
 
         <Grid
           item
           container
-          direction="row"
+          justify="space-between"
           className={classes.footer}
-          style={{ color: colorHeader }}
+          lg={12}
+          xs={12}
         >
           <strong onClick={gotToStart}>voltar ao início</strong>
-          <Grid item xs={4} lg={2}>
+          <Grid item xs={4} lg={2} container justify="flex-end">
             <BtnSocialGroup />
           </Grid>
         </Grid>
-        <div className={classes.ldIlust}>
-          <img src="im-lado-direito.png" alt="Imagem de Lado" />
-        </div>
-        <div className={classes.leIlust}>
-          <img src="img-lado-esquerdo.png" alt="Imagem de Lado" />
-        </div>
-      </Container>
-    </Grid>
+      </Grid>
+      <Grid className={classes.ldIlustAbsolute}>
+        <img
+          className={classes.ldIlust}
+          src="im-lado-direito.png"
+          alt="Imagem de Lado"
+        />
+        <img
+          className={classes.leIlust}
+          src="img-lado-esquerdo.png"
+          alt="Imagem de Lado"
+        />
+      </Grid>
+    </Fragment>
   );
 }

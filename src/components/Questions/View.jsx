@@ -7,15 +7,15 @@ import BtnAnswer from "../../components/Questions/BtnAnswer";
 const useStyles = makeStyles((theme) => ({
   gridTitle: {
     textAlign: "center",
-    height: 150,
-    marginTop: 16,
+    padding: "16px 0",
   },
   gridContainer: {
-    paddingTop: 80,
-    position: "relative",
-    zIndex: 2,
+    paddingTop: "40%",
     [theme.breakpoints.up("md")]: {
       paddingTop: "22%",
+    },
+    [theme.breakpoints.up("LG")]: {
+      paddingTop: "19%",
     },
   },
   gridBtn: {
@@ -24,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     [theme.breakpoints.up("sm")]: {
       justifyContent: "space-between",
+    },
+    "& a": {
+      width: "100%",
+    },
+    [theme.breakpoints.up("lg")]: {
+      "& a": {
+        width: "50%",
+      },
     },
   },
 }));
@@ -55,9 +63,9 @@ export default function View({ question, show, onRealQuestion }) {
             container
             justify="space-between"
             xs={12}
-            sm={8}
-            md={8}
-            lg={5}
+            sm={12}
+            md={12}
+            lg={12}
             className={classes.gridBtn}
           >
             {question.answerds.map((answerd) => (
