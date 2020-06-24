@@ -17,83 +17,58 @@ import { useTheme } from "@material-ui/core/styles";
 import { useLocation } from "react-router-dom";
 import Helmet from "react-helmet";
 import config from "../../config/config";
-var count = 0;
+
 const useStyles = makeStyles((theme) => ({
   questions: {
-    paddingLeft: 16,
-    paddingRight: 16,
-    color: "#646464",
-    height: "160vh",
-    maxHeight: "130%",
     margin: 0,
     position: "relative",
-    overflow: "hidden",
     fontSize: 16,
-    [theme.breakpoints.up("md")]: {
-      paddingLeft: 24,
-      paddingRight: 24,
-    },
-    [theme.breakpoints.up("sm")]: {
-      paddingLeft: 24,
-      paddingRight: 24,
-      height: "100vh",
-      maxHeight: "100%",
-    },
   },
   gridContainer: {
     position: "relative",
     zIndex: 1,
-    [theme.breakpoints.up("md")]: {
-      maxWidth: 1280,
-    },
   },
-  gridDescription: {
-    [theme.breakpoints.up("md")]: {
-      marginBottom: 100,
-    },
-    [theme.breakpoints.up("md")]: {
-      display: "none",
-    },
-  },
-  gridTitle: {
-    [theme.breakpoints.up("md")]: {
-      marginTop: 50,
-    },
-  },
+  gridDescription: {},
+  gridTitle: {},
   gridDescriptionLg: {
     display: "none",
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sm")]: {
       display: "flex",
+    },
+    [theme.breakpoints.up("md")]: {
+      maxHeight: 460,
     },
   },
   gridShared: {
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sm")]: {
       display: "none",
     },
   },
   gridHeader: {
-    display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "flex",
     },
   },
   footer: {
-    display: "flex",
-    justifyContent: "space-between",
-    bottom: 11,
-    position: "fixed",
     zIndex: 1,
-    boxSizing: "border-box",
     fontSize: "12px",
-    width: "84%",
+    paddingTop: 16,
+    paddingBottom: 16,
 
     "& strong:first-child": {
       cursor: "pointer",
     },
     [theme.breakpoints.up("md")]: {
-      bottom: 61,
-      width: "70%",
       fontSize: "16px",
+      marginTop: 85,
+    },
+  },
+  sharedLg: {
+    textAlign: "center",
+    [theme.breakpoints.up("md")]: {
+      height: "100%",
+      display: "-webkit-flex",
+      "-webkit-align-items": "center",
     },
   },
 }));
@@ -129,6 +104,7 @@ export default function Result() {
   const [stilo, setStilo] = useState(0);
 
   const queryString = new URLSearchParams(useLocation().search);
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   const {
     getResult,
@@ -136,14 +112,13 @@ export default function Result() {
     isAnswerdAllQuestion,
     isEmail,
     getGenre,
+    addColor,
   } = useContext(QuestionsContext);
   const history = useHistory();
   const gotToStart = () => {
     cleanAllSession();
     history.push("/");
   };
-
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const getDescriptionResult = (result) => {
     switch (result) {
@@ -283,6 +258,7 @@ export default function Result() {
       sessionStorage.setItem("stilo", stilo);
       setStilo(stilo);
     }
+    addColor(getColor());
     getDescriptionResult(stilo);
     getImgResult(stilo);
     getTitleResult(stilo);
@@ -420,7 +396,7 @@ export default function Result() {
     }
   };
 
-  console.log(urlShared);
+  console.log(getColor());
   return (
     <Fragment>
       <Helmet>
@@ -439,6 +415,7 @@ export default function Result() {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={imgShared} />
         <meta name="twitter:card" content="summary" />
+        <style>{`body { background-color: ${getBackgroundColor()} }`}</style>
       </Helmet>
 
       <Grid
@@ -448,81 +425,108 @@ export default function Result() {
         className={classes.questions}
         style={{ backgroundColor: getBackgroundColor(), color: getColor() }}
       >
-        <Container maxWidth="lg">
-          <div className={classes.gridHeader}>
-            <Header />
-          </div>
+        <Grid item className={classes.gridHeader}>
+          <Header />
+        </Grid>
 
-          <Grid
-            container
-            direction="row"
-            alignItems="flex-start"
-            className={classes.gridContainer}
-          >
-            {!matches && getImgByResult(result)}
-
-            <Grid item xs={12} sm={6} className={classes.gridTitle}>
-              {geTitleByResult(result)}
-            </Grid>
+        <Grid
+          container
+          direction="row"
+          alignItems="flex-start"
+          className={classes.gridContainer}
+        >
+          <Grid container>
             <Grid
               container
               item
               xs={12}
+              sm={6}
+              md={4}
               lg={4}
               className={classes.gridDescription}
             >
-              {getDescriptionByResult(result, getColor())}
+              <Grid item xs={12} sm={12}>
+                <Grid item xs={12} sm={12} className={classes.gridTitle}>
+                  {geTitleByResult(result)}
+                </Grid>
+                {getDescriptionByResult(result, getColor())}
+              </Grid>
             </Grid>
             <Grid
               container
               item
-              xs={10}
-              md={12}
+              sm={6}
+              md={8}
+              lg={8}
               className={classes.gridDescriptionLg}
             >
-              <Grid item md={5} style={{ paddingRight: 20 }}>
-                {getDescriptionByResult(result)}
+              <Grid
+                container
+                direction="column"
+                justify="center"
+                alignContent="center"
+                item
+                md={4}
+                xs={6}
+                sm={12}
+                lg={4}
+                className={classes.sharedLg}
+              >
+                <Shared stilo={stilo} description={description} />
               </Grid>
-              <Grid item md={6} style={{ padding: "84px 0 0 40px" }}>
+              <Grid
+                item
+                md={8}
+                xs={12}
+                sm={6}
+                lg={7}
+                style={{ textAlign: "center" }}
+                className={classes.gridImglg}
+              >
+                {!matches && getImgByResult(result)}
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid
+            item
+            container
+            xs={12}
+            direction="row"
+            className={classes.gridStilo}
+          >
+            <strong>Conheça outros estilos</strong>
+            <Grid container>
+              <Grid item xs={6} sm={6}>
+                {getStyleByResult(result)}
+              </Grid>
+              <Grid item xs={6} sm={6} container className={classes.gridShared}>
                 <Shared stilo={stilo} description={description} />
               </Grid>
             </Grid>
-
+          </Grid>
+          {matches && (
             <Grid
               item
               container
               xs={12}
-              direction="row"
-              className={classes.gridStilo}
+              direction="column"
+              justify="center"
+              alignContent="center"
             >
-              <Grid item md={3} xs={6}>
-                <strong>Conheça outros estilos</strong>
-                <br />
-                {getStyleByResult(result)}
-              </Grid>
-              <Grid item xs={2} className={classes.gridShared}>
-                <Shared stilo={stilo} description={description} />
-              </Grid>
+              {getImgByResult(result)}
             </Grid>
-            {matches && (
-              <Grid item container xs={12} direction="row">
-                {getImgByResult(result)}
-              </Grid>
-            )}
-            <br />
-            {matches && (
-              <Grid item container xs={12} direction="row" justify="center">
-                <img src={getLogo()} />
-              </Grid>
-            )}
-            <br />
-            {!matches && <img src={getLogo()} />}
-          </Grid>
-          <footer className={classes.footer}>
-            <strong onClick={gotToStart}>refazer o teste</strong>
-            <strong>ilustração by humaaans</strong>
-          </footer>
-        </Container>
+          )}
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        justify="space-between"
+        className={classes.footer}
+        style={{ color: getColor() }}
+      >
+        <strong onClick={gotToStart}>refazer o teste</strong>
+        <strong>ilustração by humaaans</strong>
       </Grid>
     </Fragment>
   );

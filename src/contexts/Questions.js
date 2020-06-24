@@ -1,10 +1,13 @@
 import React, { createContext, useState } from "react";
 import textsApp from "../texts/texts.json";
+import { getDefaultCompilerOptions } from "typescript";
 const QuestionsContext = createContext();
 
 function QuestionsProvider({ children }) {
   const [email, setEmail] = useState("");
   const [answerd, setAnswerd] = useState([]);
+  const [color, setColor] = useState("");
+
   const arraySession = [];
 
   function addEmail(email) {
@@ -166,6 +169,14 @@ function QuestionsProvider({ children }) {
     return `resultado=ok&nowQuestion=${nowQuestion}&answerds=${answerds}&genre=${genre}&email=${email}&stilo=${stilo}&finish=${finish}`;
   }
 
+  function addColor(color) {
+    setColor(color);
+  }
+
+  function getColor() {
+    return color;
+  }
+
   return (
     <QuestionsContext.Provider
       value={{
@@ -181,6 +192,8 @@ function QuestionsProvider({ children }) {
         addGenre,
         getGenre,
         getUriToShared,
+        getColor,
+        addColor,
       }}
     >
       {children}

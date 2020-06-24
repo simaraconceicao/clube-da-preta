@@ -17,6 +17,8 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#fff",
     textAlign: "center",
     padding: 26,
+    textAlign: "center",
+    display: "inline-flex",
   },
 
   aLink: {

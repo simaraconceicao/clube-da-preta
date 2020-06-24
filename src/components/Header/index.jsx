@@ -7,9 +7,7 @@ const useStyles = makeStyles((theme) => ({
     height: 50,
     fontFamily: "Intro Bold, Regular",
     color: "#F27253",
-    [theme.breakpoints.up("sm")]: {
-      padding: "0px 55px",
-    },
+    [theme.breakpoints.up("sm")]: {},
     [theme.breakpoints.up("md")]: {
       height: 100,
     },
