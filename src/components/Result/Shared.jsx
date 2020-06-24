@@ -49,7 +49,11 @@ export default function Shared({ stilo, description, title }) {
 
   const sharedFacebook = () => {
     var dt = Math.random(1, 100);
-    let url = `https://www.facebook.com/sharer/sharer.php?u=${config.URL_BTN_SHARED}/resultado?url=${dt}&${uri}`;
+    let url = `https://www.facebook.com/sharer/sharer.php?u=${
+      config.URL_BTN_SHARED
+    }/resultado?url=${dt}&${encodeURIComponent(uri)}`;
+
+    console.log(url);
     window.open(
       url,
       "Facebook - Club da Preta",

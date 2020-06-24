@@ -3,24 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter as Router } from "react-router-dom";
 import { hydrate, render } from "react-dom";
-
 const rootElement = document.getElementById("root");
 if (rootElement.hasChildNodes()) {
-  hydrate(
-    <Router>
-      <App />
-    </Router>,
-    rootElement
-  );
+  hydrate(<App />, rootElement);
 } else {
-  render(
-    <Router>
-      <App />
-    </Router>,
-    rootElement
-  );
+  render(<App />, rootElement);
 }
 
 // If you want your app to work offline and load faster, you can change

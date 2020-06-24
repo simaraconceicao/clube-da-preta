@@ -119,7 +119,7 @@ export default function Result() {
   const theme = useTheme();
   const [result, setResult] = useState(0);
   const [imgShared, setImgShared] = useState(
-    `${config.URL_BTN_SHARED}/logo.svg`
+    `/${config.URL_BTN_SHARED}/logo.svg`
   );
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -127,7 +127,6 @@ export default function Result() {
   const [type, setType] = useState("article");
   const [urlShared, setUrlShared] = useState();
   const [stilo, setStilo] = useState(0);
-  const [uriTwitter, setUriTwitter] = useState("");
 
   const queryString = new URLSearchParams(useLocation().search);
 
@@ -279,8 +278,8 @@ export default function Result() {
       nowQuestion = sessionStorage.getItem("nowQuestion", nowQuestion);
       genre = sessionStorage.getItem("genre", genre);
       email = sessionStorage.getItem("email", email);
-      uri = `resultado=ok&nowQuestion=${nowQuestion}&genre=${genre}&email=${email}&stilo=${stilo}&finish=${finish}`;
       stilo = getResult();
+      uri = `resultado=ok&nowQuestion=${nowQuestion}&genre=${genre}&email=${email}&stilo=${stilo}&finish=${finish}`;
       sessionStorage.setItem("stilo", stilo);
       setStilo(stilo);
     }
@@ -420,6 +419,8 @@ export default function Result() {
         );
     }
   };
+
+  console.log(urlShared);
   return (
     <Fragment>
       <Helmet>
