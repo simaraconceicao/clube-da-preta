@@ -38,5 +38,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "var_dump": "^1.0.5"
+  }
 }

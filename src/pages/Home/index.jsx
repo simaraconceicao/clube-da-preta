@@ -290,7 +290,7 @@ export default function Home() {
           className={classes.gridContainer}
         >
           <Grid item lg={4} className={classes.gridImgWoman}>
-            <img src="woman-home.svg" />
+            <img alt="woman home" src="woman-home.svg" />
           </Grid>
           <Grid item lg={6} style={{ textAlign: "center" }}>
             <h1 className={classes.hOne}>Qual o seu estilo?</h1>
@@ -345,7 +345,7 @@ export default function Home() {
             </Grid>
           </Grid>
           <Grid item md={12} lg={4} className={classes.gridImg}>
-            <img src="man.svg" />
+            <img alt="man home" src="man.svg" />
           </Grid>
         </Grid>
       </Grid>

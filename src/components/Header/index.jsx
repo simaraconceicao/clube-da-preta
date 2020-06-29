@@ -38,7 +38,7 @@ export default function Header({ color }) {
         <span className={classes.titulo}>Quiz: Qual seu estilo?</span>
       </Grid>
       <Grid item>
-        <img src="logocp.svg" />
+        <img alt="logo" src="logocp.svg" />
       </Grid>
     </Grid>
   );

@@ -22,7 +22,7 @@ export default function ImgResult({ img }) {
   const classes = useStyles();
   return (
     <Grid container direction="row" className={classes.gridImg}>
-      <img src={img} />
+      <img alt="Imagem to shared" src={img} />
     </Grid>
   );
 }

@@ -238,7 +238,7 @@ export default function Result() {
     let genre = queryString.get("genre");
     let email = queryString.get("email");
     let stilo = queryString.get("stilo");
-    let uri = `resultado=ok&nowQuestion=${nowQuestion}&genre=${genre}&email=${email}&stilo=${stilo}&finish=${finish}`;
+    let uri = `stilo=${stilo}g${genre}`;
     if (resultado === "ok") {
       sessionStorage.setItem("finish", finish);
       sessionStorage.setItem("nowQuestion", nowQuestion);
@@ -254,7 +254,7 @@ export default function Result() {
       genre = sessionStorage.getItem("genre", genre);
       email = sessionStorage.getItem("email", email);
       stilo = getResult();
-      uri = `resultado=ok&nowQuestion=${nowQuestion}&genre=${genre}&email=${email}&stilo=${stilo}&finish=${finish}`;
+      uri = `stilo=${stilo}g${genre}`;
       sessionStorage.setItem("stilo", stilo);
       setStilo(stilo);
     }
@@ -263,17 +263,14 @@ export default function Result() {
     getImgResult(stilo);
     getTitleResult(stilo);
 
-    /*todas as questao foram respondidas? senao volte para tela inicial*/
     if (!isEmail()) {
       history.push("/");
     } else if (!isAnswerdAllQuestion()) {
-      //nao respondeu todas as questoes?
-      //onde parei ? volte para onde eu parei
       history.push("/perguntas");
     }
 
     setUrlShared(
-      `https://www.facebook.com/sharer/sharer.php?u=${config.URL_BTN_SHARED}/resultado?${uri}`
+      `https://www.facebook.com/sharer/sharer.php?u=${config.URL_BTN_SHARED}?${uri}`
     );
     // react-hooks/exhaustive-deps
   }, []);

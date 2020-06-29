@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
   },
   ldIlust: {
     width: "50%",
-    bottom: 0,
     right: 0,
     position: "absolute",
     bottom: -331,

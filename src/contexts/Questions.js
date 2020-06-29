@@ -160,13 +160,9 @@ function QuestionsProvider({ children }) {
   }
 
   function getUriToShared() {
-    const finish = sessionStorage.getItem("finish");
-    const nowQuestion = sessionStorage.getItem("nowQuestion");
-    const answerds = true;
     const genre = sessionStorage.getItem("genre");
-    const email = sessionStorage.getItem("email");
     const stilo = sessionStorage.getItem("stilo");
-    return `resultado=ok&nowQuestion=${nowQuestion}&answerds=${answerds}&genre=${genre}&email=${email}&stilo=${stilo}&finish=${finish}`;
+    return `stilo=${stilo}g${genre}`;
   }
 
   function addColor(color) {
