@@ -393,7 +393,6 @@ export default function Result() {
     }
   };
 
-  console.log(getColor());
   return (
     <Fragment>
       <Helmet>
