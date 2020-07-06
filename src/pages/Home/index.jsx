@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
@@ -20,15 +20,18 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 16,
     color: "#646464",
     height: "100vh",
-    backgroundColor: "#fdeec9",
     maxHeight: "100%",
     overflow: "hidden",
+    position: "relative",
     "& a": {
       color: "#b10202",
     },
-    [theme.breakpoints.up(1024)]: {
-      position: "relative",
-    },
+  },
+  containerImg: {
+    height: "100vh",
+    maxHeight: "100%",
+    overflow: "hidden",
+    position: "absolute",
   },
   hOne: {
     textAlign: "center",
@@ -71,46 +74,66 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   gridImg: {
-    display: "flex",
-    backgroundColor: "rgba(255,255,255,0.01)",
+    display: "none",
     position: "absolute",
     zIndex: "-1",
-    width: "100%",
     "& img": {
       position: "absolute",
-      width: "100%",
+      left: "-14%",
+    },
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+    },
+
+    /*width: "100%",
+    "& img": {
+      position: "absolute",
+      left: -23,
     },
     [theme.breakpoints.up("1024")]: {
-      
       display: "flex",
-      top:"-120px",
+      top: "-120px",
       left: "700px",
       width: "60%",
       position: "absolute",
-    },
+    },*/
     // [theme.breakpoints.up("1440")]: {
-      
+
     //   display: "flex",
     //   width: "100%",
-    //   left: "-500px",    
+    //   left: "-500px",
     //   top: "-10px",
     //   position: "absolute",
     // },
   },
   gridImgWoman: {
-    
     position: "absolute",
     zIndex: "-1",
-    right: "44px",
+    justifyContent: "center",
+    "& img": {
+      position: "absolute",
+    },
+    [theme.breakpoints.up("md")]: {
+      justifyContent: "flex-end",
+      "& img": {
+        right: "-119px",
+      },
+    },
+    [theme.breakpoints.up("lg")]: {
+      justifyContent: "flex-end",
+    },
+
+    /*right: "44px",
     left: "-152px",
     top: "-50px",
+    display: "none",
     backgroundColor: "rgba(255,255,255,0.01)",
     "& img": {
       width: "100%",
     },
     [theme.breakpoints.up("sm")]: {
+      display: "flex",
       "& img": {
-        display:"flex",
         position: "absolute",
         top: -139,
         left: "0%",
@@ -119,11 +142,11 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up(1024)]: {
       "& img": {
-      top: "-50px",
-      left: "2%",
-      right: 0,
-      width: "55%",
-      position: "absolute",
+        top: "-50px",
+        left: "2%",
+        right: 0,
+        width: "55%",
+        position: "absolute",
       },
       // [theme.breakpoints.up(1440)]: {
       //   "& img": {
@@ -131,10 +154,10 @@ const useStyles = makeStyles((theme) => ({
       //     right: "200px",
       //     width: "60%",
       //     position: "absolute",
-          
+
       //   },
       // },
-    },
+    },*/
   },
   gridContainer: {
     position: "relative",
@@ -271,6 +294,7 @@ export default function Home() {
     if (isEmail()) {
       history.push("/perguntas");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const gotAhead = (e) => {
@@ -280,84 +304,89 @@ export default function Home() {
   };
 
   return (
-    <Grid container className={classes.home}>
-      <Helmet>
-        <title>Quiz: Qual seu estilo? Club da Preta</title>
-        <meta name="description" content="Quiz: Qual seu estilo?" />
-        <style>{"body { background-color: #fdeec9; }"}</style>
-      </Helmet>
-      <Header />
-      <Grid container alignItems="center" direction="column">
-        <Grid
-          container
-          alignItems="center"
-          direction="column"
-          item
-          md={8}
-          xs={12}
-          lg={12}
-          className={classes.gridContainer}
-        >
-          <Grid item lg={12} className={classes.gridImgWoman}>
-            <img alt="woman home" src="man.svg" />
-          </Grid>
-          <Grid item lg={6} style={{ textAlign: "center" }}>
-            <h1 className={classes.hOne}>Qual o seu estilo?</h1>
-            <p className={classes.p}>
-              Você tem ideia de qual é seu estilo feito por afroempreendedores?
-              Identificamos dentre os fornecedores do Clube da Preta alguns
-              diversos estilos de moda. E conseguimos identificar 5 que são os
-              mais comuns entre eles: Basico, Clássico, Casual, Esporte e
-              Fashion. Que tal participar do nosso quiz para saber qual mais
-              combina com você? Vem, vamos descobrir juntos!
-            </p>
-            <FormControl className={classes.FormControl}>
-              <BootstrapInput
-                fullWidth
-                placeholder="Qual o seu Email?"
-                //onChange={setEmail}
-                onKeyPress={(e) => gotAhead(e)}
-                onBlur={setEmail}
-              />
-              {isError && (
-                <span className={classes.spanError}>{messageError}</span>
-              )}
-            </FormControl>
-            <FormControl className={classes.FormControl}>
-              <NativeSelect
-                value={genre}
-                onKeyPress={gotAhead}
-                onChange={handleChange}
-                input={<BootstrapInput />}
+    <Fragment>
+      <Grid container className={classes.containerImg}>
+        <Grid container className={classes.gridImg}>
+          <img alt="man home" src="man.svg" />
+        </Grid>
+        <Grid container className={classes.gridImgWoman}>
+          <img alt="woman home" src="woman-home.svg" />
+        </Grid>
+      </Grid>
+      <Grid container className={classes.home}>
+        <Helmet>
+          <title>Quiz: Qual seu estilo? Club da Preta</title>
+          <meta name="description" content="Quiz: Qual seu estilo?" />
+          <style>{"body { background-color: #fdeec9; }"}</style>
+        </Helmet>
+        <Header />
+        <Grid container alignItems="center" direction="column">
+          <Grid
+            container
+            alignItems="center"
+            direction="column"
+            item
+            md={8}
+            xs={12}
+            lg={12}
+            className={classes.gridContainer}
+          >
+            <Grid item lg={6} style={{ textAlign: "center" }}>
+              <h1 className={classes.hOne}>Qual o seu estilo?</h1>
+              <p className={classes.p}>
+                Você tem ideia de qual é seu estilo feito por
+                afroempreendedores? Identificamos dentre os fornecedores do
+                Clube da Preta alguns diversos estilos de moda. E conseguimos
+                identificar 5 que são os mais comuns entre eles: Basico,
+                Clássico, Casual, Esporte e Fashion. Que tal participar do nosso
+                quiz para saber qual mais combina com você? Vem, vamos descobrir
+                juntos!
+              </p>
+              <FormControl className={classes.FormControl}>
+                <BootstrapInput
+                  fullWidth
+                  placeholder="Qual o seu Email?"
+                  //onChange={setEmail}
+                  onKeyPress={(e) => gotAhead(e)}
+                  onBlur={setEmail}
+                />
+                {isError && (
+                  <span className={classes.spanError}>{messageError}</span>
+                )}
+              </FormControl>
+              <FormControl className={classes.FormControl}>
+                <NativeSelect
+                  value={genre}
+                  onKeyPress={gotAhead}
+                  onChange={handleChange}
+                  input={<BootstrapInput />}
+                >
+                  <option aria-label="None" value="">
+                    Como você se identifica?
+                  </option>
+                  <option value={2}>Masculino</option>
+                  <option value={1}>Feminino</option>
+                </NativeSelect>
+                {isErrorGenre && (
+                  <span className={classes.spanError}>{messageErrorGenre}</span>
+                )}
+              </FormControl>
+              <br />
+              <br />
+              <Button
+                variant="contained"
+                className={classes.btn}
+                onClick={goToQuestion}
               >
-                <option aria-label="None" value="">
-                  Como você se identifica?
-                </option>
-                <option value={2}>Masculino</option>
-                <option value={1}>Feminino</option>
-              </NativeSelect>
-              {isErrorGenre && (
-                <span className={classes.spanError}>{messageErrorGenre}</span>
-              )}
-            </FormControl>
-            <br />
-            <br />
-            <Button
-              variant="contained"
-              className={classes.btn}
-              onClick={goToQuestion}
-            >
-              Vamos descobrir?
-            </Button>
-            <Grid item sm={2} className={classes.gridRedesSociais}>
-              <BtnSocialGroup />
+                Vamos descobrir?
+              </Button>
+              <Grid item sm={2} className={classes.gridRedesSociais}>
+                <BtnSocialGroup />
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid item sm={8} md={12} lg={12} className={classes.gridImg}>
-            <img alt="man home" src="woman-home.svg" />
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </Fragment>
   );
 }
