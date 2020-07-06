@@ -10,6 +10,8 @@ import Helmet from "react-helmet";
 import QuestionsApp from "../../texts/texts.json";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+
 
 const useStyles = makeStyles((theme) => ({
   questions: {
@@ -175,6 +177,7 @@ export default function Question() {
 
   return (
     <Fragment>
+      <Container maxWidth="lg">
       <Helmet>
         <title>Responda as perguntas - Club da Preta</title>
         <meta name="description" content="Quiz: Qual seu estilo?" />
@@ -209,7 +212,6 @@ export default function Question() {
             />
           ))}
         </Grid>
-
         <Grid
           item
           container
@@ -224,6 +226,8 @@ export default function Question() {
           </Grid>
         </Grid>
       </Grid>
+      </Container>
+
       <Grid className={classes.ldIlustAbsolute}>
         <img
           className={classes.ldIlust}

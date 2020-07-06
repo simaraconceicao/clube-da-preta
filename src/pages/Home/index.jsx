@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     "& a": {
       color: "#b10202",
     },
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up(1024)]: {
       position: "relative",
     },
   },
@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   gridImg: {
-    display: "none",
+    display: "flex",
     backgroundColor: "rgba(255,255,255,0.01)",
     position: "absolute",
     zIndex: "-1",
@@ -80,18 +80,25 @@ const useStyles = makeStyles((theme) => ({
       position: "absolute",
       width: "100%",
     },
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("1024")]: {
+      
       display: "flex",
-      right: "-48%",
-      top: -117,
+      top:"-120px",
+      left: "700px",
+      width: "60%",
+      position: "absolute",
     },
-    [theme.breakpoints.up("lg")]: {
-      display: "flex",
-      right: 0,
-      top: 17,
-    },
+    // [theme.breakpoints.up("1440")]: {
+      
+    //   display: "flex",
+    //   width: "100%",
+    //   left: "-500px",    
+    //   top: "-10px",
+    //   position: "absolute",
+    // },
   },
   gridImgWoman: {
+    
     position: "absolute",
     zIndex: "-1",
     right: "44px",
@@ -103,28 +110,30 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up("sm")]: {
       "& img": {
+        display:"flex",
         position: "absolute",
         top: -139,
         left: "0%",
         width: "70%",
       },
     },
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up(1024)]: {
       "& img": {
-        position: "absolute",
-        top: -99,
-        right: 0,
-        left: "-26%",
-        width: "100%",
+      top: "-50px",
+      left: "2%",
+      right: 0,
+      width: "55%",
+      position: "absolute",
       },
-      [theme.breakpoints.up("lg")]: {
-        "& img": {
-          position: "absolute",
-          top: 70,
-          left: 103,
-          width: "100%",
-        },
-      },
+      // [theme.breakpoints.up(1440)]: {
+      //   "& img": {
+      //     top: "-100px",
+      //     right: "200px",
+      //     width: "60%",
+      //     position: "absolute",
+          
+      //   },
+      // },
     },
   },
   gridContainer: {
@@ -289,8 +298,8 @@ export default function Home() {
           lg={12}
           className={classes.gridContainer}
         >
-          <Grid item lg={4} className={classes.gridImgWoman}>
-            <img alt="woman home" src="woman-home.svg" />
+          <Grid item lg={12} className={classes.gridImgWoman}>
+            <img alt="woman home" src="man.svg" />
           </Grid>
           <Grid item lg={6} style={{ textAlign: "center" }}>
             <h1 className={classes.hOne}>Qual o seu estilo?</h1>
@@ -344,8 +353,8 @@ export default function Home() {
               <BtnSocialGroup />
             </Grid>
           </Grid>
-          <Grid item md={12} lg={4} className={classes.gridImg}>
-            <img alt="man home" src="man.svg" />
+          <Grid item sm={8} md={12} lg={12} className={classes.gridImg}>
+            <img alt="man home" src="woman-home.svg" />
           </Grid>
         </Grid>
       </Grid>
