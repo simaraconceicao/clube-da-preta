@@ -21,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
       fontSize: 16,
     },
   },
+  logo: {
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "block",
+    },
+  },
 }));
 
 export default function Header({ color }) {
@@ -37,8 +43,8 @@ export default function Header({ color }) {
       <Grid item>
         <span className={classes.titulo}>Quiz: Qual seu estilo?</span>
       </Grid>
-      <Grid item>
-        <img alt="logo" src="logocp.svg" />
+      <Grid item className={classes.logo}>
+        <img alt="logo" src="/logocp.svg" />
       </Grid>
     </Grid>
   );

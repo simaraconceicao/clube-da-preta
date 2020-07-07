@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -10,12 +11,12 @@ const useStyles = makeStyles((theme) => ({
     padding: "16px 0",
   },
   gridContainer: {
-    paddingTop: "40%",
+    height: "100%",
     [theme.breakpoints.up("md")]: {
-      paddingTop: "22%",
+      //paddingTop: "22%",
     },
     [theme.breakpoints.up("LG")]: {
-      paddingTop: "19%",
+      //paddingTop: "19%",
     },
   },
   gridBtn: {

@@ -84,27 +84,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       display: "flex",
     },
-
-    /*width: "100%",
-    "& img": {
-      position: "absolute",
-      left: -23,
-    },
-    [theme.breakpoints.up("1024")]: {
-      display: "flex",
-      top: "-120px",
-      left: "700px",
-      width: "60%",
-      position: "absolute",
-    },*/
-    // [theme.breakpoints.up("1440")]: {
-
-    //   display: "flex",
-    //   width: "100%",
-    //   left: "-500px",
-    //   top: "-10px",
-    //   position: "absolute",
-    // },
   },
   gridImgWoman: {
     position: "absolute",
@@ -122,42 +101,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("lg")]: {
       justifyContent: "flex-end",
     },
-
-    /*right: "44px",
-    left: "-152px",
-    top: "-50px",
-    display: "none",
-    backgroundColor: "rgba(255,255,255,0.01)",
-    "& img": {
-      width: "100%",
-    },
-    [theme.breakpoints.up("sm")]: {
-      display: "flex",
-      "& img": {
-        position: "absolute",
-        top: -139,
-        left: "0%",
-        width: "70%",
-      },
-    },
-    [theme.breakpoints.up(1024)]: {
-      "& img": {
-        top: "-50px",
-        left: "2%",
-        right: 0,
-        width: "55%",
-        position: "absolute",
-      },
-      // [theme.breakpoints.up(1440)]: {
-      //   "& img": {
-      //     top: "-100px",
-      //     right: "200px",
-      //     width: "60%",
-      //     position: "absolute",
-
-      //   },
-      // },
-    },*/
   },
   gridContainer: {
     position: "relative",

@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState, Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -12,13 +14,12 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-
 const useStyles = makeStyles((theme) => ({
   questions: {
     color: "#646464",
-    backgroundColor: "#f27253",
     position: "relative",
     zIndex: 3,
+    height: "80%",
   },
   footer: {
     bottom: 20,
@@ -76,7 +77,6 @@ const useStyles = makeStyles((theme) => ({
 
   leIlust: {
     width: "50%",
-    bottom: 0,
     left: -44,
     position: "absolute",
     bottom: -331,
@@ -96,11 +96,60 @@ const useStyles = makeStyles((theme) => ({
       bottom: -552,
     },
   },
+
+  containerImg: {
+    position: "absolute",
+  },
+
+  gridImgCima: {
+    position: "absolute",
+    justifyContent: "center",
+    "& img": {
+      position: "absolute",
+    },
+    "& #desktop": {
+      display: "none",
+    },
+    [theme.breakpoints.up("sm")]: {
+      "& #mobile": {
+        display: "none",
+      },
+      "& #desktop": {
+        display: "block",
+      },
+    },
+
+    [theme.breakpoints.up("lg")]: {
+      //width: "100%",
+    },
+
+    [theme.breakpoints.up("1920")]: {
+      //top: "-57%",
+      //left: "-3%",
+    },
+    [theme.breakpoints.up("xlg")]: {
+      // top: "-57%",
+      //left: "-3%",
+    },
+  },
+  gridImgesquerda: {
+    position: "absolute",
+    justifyContent: "flex-start",
+    "& img": {
+      position: "absolute",
+    },
+  },
+  gridImgdireita: {
+    position: "absolute",
+    justifyContent: "flex-end",
+    "& img": {
+      position: "absolute",
+    },
+  },
 }));
 
 export default function Question() {
   const classes = useStyles();
-  const color = "#f27253";
   let colorHeader = "#f27253";
   const theme = useTheme();
 
@@ -177,68 +226,73 @@ export default function Question() {
 
   return (
     <Fragment>
-      <Container maxWidth="lg">
-      <Helmet>
-        <title>Responda as perguntas - Club da Preta</title>
-        <meta name="description" content="Quiz: Qual seu estilo?" />
-        <style>{"body { background-color: #f27253; }"}</style>
-      </Helmet>
-
       <Grid
         container
-        direction="row"
-        justify="center"
-        className={classes.questions}
+        style={{ overflow: "hidden", maxWidth: "100%", position: "relative" }}
       >
-        <Grid container justify="center" className={classes.imgheaderIlust}>
-          <img src="imagemheader.png" alt="Imagem de cima" />
-        </Grid>
-        <Grid item xs={12} md={12} lg={12} style={{ position: "relative" }}>
-          <Header color={colorHeader} />
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={12}
-          lg={12}
-          style={{ position: "relative", zIndex: 2 }}
-        >
-          {questions.map((question) => (
-            <View
-              key={question.id}
-              question={question}
-              show={question.id == nowQuestion}
-              onRealQuestion={(e) => getRealQuestion(e)}
-            />
-          ))}
-        </Grid>
-        <Grid
-          item
-          container
-          justify="space-between"
-          className={classes.footer}
-          lg={12}
-          xs={12}
-        >
-          <strong onClick={gotToStart}>voltar ao início</strong>
-          <Grid item xs={4} lg={2} container justify="flex-end">
-            <BtnSocialGroup />
+        <Grid container className={classes.containerImg}>
+          <Grid container className={classes.gridImgCima}>
+            <img alt="Acima" id="mobile" src="/perguntas/cimamobile.svg" />
+            <img alt="Acima" id="desktop" src="/perguntas/cima.svg" />
+          </Grid>
+          <Grid container className={classes.gridImgdireita}>
+            <img alt="clube da preta" src="/perguntas/direita.svg" />
+          </Grid>
+          <Grid container className={classes.gridImgesquerda}>
+            <img alt="clube da preta" src="/perguntas/esquerda.svg" />
+            <img alt="clube da preta" src="/perguntas/esquerdaacima.svg" />
           </Grid>
         </Grid>
-      </Grid>
-      </Container>
+        <Container
+          maxWidth="lg"
+          style={{ position: "relative", height: "100vh" }}
+        >
+          <Helmet>
+            <title>Responda as perguntas - Club da Preta</title>
+            <meta name="description" content="Quiz: Qual seu estilo?" />
+            <style>{"body { background-color: #f27253; }"}</style>
+          </Helmet>
 
-      <Grid className={classes.ldIlustAbsolute}>
-        <img
-          className={classes.ldIlust}
-          src="im-lado-direito.png"
-          alt="Imagem de Lado"
-        />
-        <img
-          className={classes.leIlust}
-          src="img-lado-esquerdo.png"
-          alt="Imagem de Lado"
-        />
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            className={classes.questions}
+          >
+            <Grid item xs={12} md={12} lg={12} style={{ position: "relative" }}>
+              <Header color={colorHeader} />
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              md={12}
+              lg={12}
+              style={{ position: "relative", zIndex: 2 }}
+            >
+              {questions.map((question) => (
+                <View
+                  key={question.id}
+                  question={question}
+                  show={question.id == nowQuestion}
+                  onRealQuestion={(e) => getRealQuestion(e)}
+                />
+              ))}
+            </Grid>
+            <Grid
+              item
+              container
+              justify="space-between"
+              className={classes.footer}
+              lg={12}
+              xs={12}
+            >
+              <strong onClick={gotToStart}>voltar ao início</strong>
+              <Grid item xs={4} lg={2} container justify="flex-end">
+                <BtnSocialGroup />
+              </Grid>
+            </Grid>
+          </Grid>
+        </Container>
       </Grid>
     </Fragment>
   );
