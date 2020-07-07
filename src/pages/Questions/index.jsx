@@ -135,15 +135,71 @@ const useStyles = makeStyles((theme) => ({
   gridImgesquerda: {
     position: "absolute",
     justifyContent: "flex-start",
+    height: "100%",
+    "& #esquerda": {
+      display: "none",
+    },
+    "& #esquerdabaixo": {
+      display: "none",
+    },
+    "& #esquerdabaixomobile": {
+      bottom: 0,
+    },
+
     "& img": {
       position: "absolute",
+    },
+
+    [theme.breakpoints.up("sm")]: {
+      "& #esquerdamobile": {
+        display: "none",
+      },
+      "& #esquerda": {
+        display: "block",
+      },
+      "& #esquerdabaixo": {
+        display: "block",
+      },
+      "& #esquerdabaixomobile": {
+        display: "none",
+      },
     },
   },
   gridImgdireita: {
     position: "absolute",
+    height: "100vh",
     justifyContent: "flex-end",
+    "& #direitacima": {
+      display: "none",
+    },
+    "& #diretacima": {
+      display: "none",
+    },
+    "& #direta": {
+      display: "none",
+      bottom: 0,
+    },
+    "& #diretamobile": {
+      bottom: 0,
+    },
     "& img": {
       position: "absolute",
+    },
+    [theme.breakpoints.up("sm")]: {
+      "& #direitacima": {
+        display: "block",
+      },
+      "& #direitacimamobile": {
+        display: "none",
+      },
+    },
+    [theme.breakpoints.up("sm")]: {
+      "& #direta": {
+        display: "block",
+      },
+      "& #diretamobile": {
+        display: "none",
+      },
     },
   },
 }));
@@ -235,12 +291,47 @@ export default function Question() {
             <img alt="Acima" id="mobile" src="/perguntas/cimamobile.svg" />
             <img alt="Acima" id="desktop" src="/perguntas/cima.svg" />
           </Grid>
+
           <Grid container className={classes.gridImgdireita}>
-            <img alt="clube da preta" src="/perguntas/direta.svg" />
+            <img alt="clube da preta" id="direta" src="/perguntas/direta.svg" />
+            <img
+              alt="clube da preta"
+              id="diretamobile"
+              src="/perguntas/diretamobile.svg"
+            />
           </Grid>
-          <Grid container className={classes.gridImgesquerda}>
-            <img alt="clube da preta" src="/perguntas/esquerda.svg" />
-          </Grid>
+        </Grid>
+        <Grid container className={classes.gridImgdireita}>
+          <img
+            alt="clube da preta"
+            id="direitacima"
+            src="/perguntas/linhadireita.svg"
+          />
+          <img
+            alt="clube da preta"
+            id="direitacimamobile"
+            src="/perguntas/direitacimamobile.svg"
+          />
+        </Grid>
+
+        <Grid container className={classes.gridImgesquerda}>
+          <img
+            alt="clube da preta"
+            id="esquerda"
+            src="/perguntas/esquerda.svg"
+          />
+        </Grid>
+        <Grid container className={classes.gridImgesquerda}>
+          <img
+            alt="clube da preta"
+            id="esquerdabaixo"
+            src="/perguntas/esquerdabaixo.svg"
+          />
+          <img
+            alt="clube da preta"
+            id="esquerdabaixomobile"
+            src="/perguntas/esquerdabaixomobile.svg"
+          />
         </Grid>
         <Container
           maxWidth="lg"

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="101.11015"
+   height="454.32599"
+   viewBox="0 0 101.11016 454.32597"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="esquerdamobile.svg"
+   inkscape:version="1.0 (6e3e5246a0, 2020-05-07)">
+  <metadata
+     id="metadata12">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:document-rotation="0"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1052"
+     id="namedview10"
+     showgrid="false"
+     inkscape:zoom="1.8277935"
+     inkscape:cx="105.55507"
+     inkscape:cy="352.87447"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.a{fill:#e16957;}</style>
+  </defs>
+  <path
+     style="stroke-width:0.818893"
+     class="a"
+     d="m -91.044122,-0.66266457 c 1.427905,0.75084977 2.85217,1.49801547 4.271885,2.26728647 C -40.642435,26.431296 9.2496104,53.331463 42.89594,89.690568 c 25.582161,27.631862 39.202321,64.621702 47.596837,97.798362 2.625562,10.38295 3.265344,20.47263 4.293727,30.96169 1.532564,15.62857 5.321196,30.874 6.048346,46.58289 a 245.46774,198.74529 0 0 1 -2.220577,37.01785 c -3.025994,16.49953 -8.935101,32.31896 -18.240601,49.23408 -14.304535,25.95848 -28.394292,49.3925 -49.116666,72.41463 q -2.795746,3.09477 -5.695239,6.10995 c -8.645698,9.00431 -17.940278,17.48324 -27.3932106,25.87743 H -91.043212 Z"
+     id="path6" />
+</svg>
