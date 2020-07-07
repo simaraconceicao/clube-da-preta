@@ -49,53 +49,6 @@ const useStyles = makeStyles((theme) => ({
       left: "auto",
     },
   },
-  ldIlustAbsolute: {
-    position: "absolute",
-    width: "100%",
-    marginTop: 12,
-  },
-  ldIlust: {
-    width: "50%",
-    right: 0,
-    position: "absolute",
-    bottom: -331,
-    [theme.breakpoints.up("sm")]: {
-      bottom: -592,
-      width: "60%",
-    },
-    [theme.breakpoints.up("md")]: {
-      bottom: -652,
-      width: "50%",
-    },
-    [theme.breakpoints.up("lg")]: {
-      top: -43,
-      left: "auto",
-      width: "30%",
-      right: 128,
-    },
-  },
-
-  leIlust: {
-    width: "50%",
-    left: -44,
-    position: "absolute",
-    bottom: -331,
-    [theme.breakpoints.up("sm")]: {
-      bottom: -652,
-      width: "60%",
-      left: -104,
-    },
-    [theme.breakpoints.up("md")]: {
-      bottom: -652,
-      width: "60%",
-      left: -104,
-    },
-    [theme.breakpoints.up("lg")]: {
-      left: -278,
-      width: "30%",
-      bottom: -552,
-    },
-  },
 
   containerImg: {
     position: "absolute",
@@ -110,8 +63,23 @@ const useStyles = makeStyles((theme) => ({
     "& #desktop": {
       display: "none",
     },
+    "& #tablet": {
+      display: "none",
+    },
+
     [theme.breakpoints.up("sm")]: {
       "& #mobile": {
+        display: "none",
+      },
+      "& #desktop": {
+        display: "none",
+      },
+      "& #tablet": {
+        display: "block",
+      },
+    },
+    [theme.breakpoints.up("md")]: {
+      "& #tablet": {
         display: "none",
       },
       "& #desktop": {
@@ -121,15 +89,6 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.up("lg")]: {
       //width: "100%",
-    },
-
-    [theme.breakpoints.up("1920")]: {
-      //top: "-57%",
-      //left: "-3%",
-    },
-    [theme.breakpoints.up("xlg")]: {
-      // top: "-57%",
-      //left: "-3%",
     },
   },
   gridImgesquerda: {
@@ -156,9 +115,11 @@ const useStyles = makeStyles((theme) => ({
       },
       "& #esquerda": {
         display: "block",
+        top: 10,
       },
       "& #esquerdabaixo": {
         display: "block",
+        bottom: 0,
       },
       "& #esquerdabaixomobile": {
         display: "none",
@@ -172,9 +133,14 @@ const useStyles = makeStyles((theme) => ({
     "& #direitacima": {
       display: "none",
     },
-    "& #diretacima": {
+
+    "& #direitacimatablet": {
       display: "none",
     },
+    "& #direitacimaxlg": {
+      display: "none",
+    },
+
     "& #direta": {
       display: "none",
       bottom: 0,
@@ -185,20 +151,51 @@ const useStyles = makeStyles((theme) => ({
     "& img": {
       position: "absolute",
     },
+
     [theme.breakpoints.up("sm")]: {
       "& #direitacima": {
-        display: "block",
+        display: "none",
       },
       "& #direitacimamobile": {
         display: "none",
       },
+      "& #direta": {
+        display: "block",
+      },
+
+      "& #direitacimatablet": {
+        display: "block",
+      },
+      "& #diretamobile": {
+        display: "none",
+      },
     },
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       "& #direta": {
         display: "block",
       },
       "& #diretamobile": {
         display: "none",
+      },
+      "& #direitacima": {
+        display: "block",
+      },
+      "& #direitacimatablet": {
+        display: "none",
+      },
+    },
+    [theme.breakpoints.up("lg")]: {
+      "& #direitacima": {
+        display: "block",
+      },
+    },
+    [theme.breakpoints.up("xl")]: {
+      "& #diretacima": {
+        display: "none !importante",
+        top: "-897px",
+      },
+      "& #direitacimaxlg": {
+        display: "block",
       },
     },
   },
@@ -290,6 +287,7 @@ export default function Question() {
           <Grid container className={classes.gridImgCima}>
             <img alt="Acima" id="mobile" src="/perguntas/cimamobile.svg" />
             <img alt="Acima" id="desktop" src="/perguntas/cima.svg" />
+            <img alt="Acima" id="tablet" src="/perguntas/cimatablet.svg" />
           </Grid>
 
           <Grid container className={classes.gridImgdireita}>
@@ -311,6 +309,16 @@ export default function Question() {
             alt="clube da preta"
             id="direitacimamobile"
             src="/perguntas/direitacimamobile.svg"
+          />
+          <img
+            alt="clube da preta"
+            id="direitacimatablet"
+            src="/perguntas/direitacimatablet.svg"
+          />
+          <img
+            alt="clube da preta"
+            id="direitacimaxlg"
+            src="/perguntas/direitacimaxlg.svg"
           />
         </Grid>
 

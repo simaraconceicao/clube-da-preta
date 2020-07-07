@@ -7,6 +7,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 18,
     letterSpacing: 4,
     fontWeight: 900,
+    [theme.breakpoints.up("sm")]: {
+      fontSize: 34,
+      letterSpacing: 4,
+    },
     [theme.breakpoints.up("md")]: {
       fontSize: 34,
       letterSpacing: 4,
