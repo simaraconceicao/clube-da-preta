@@ -236,11 +236,10 @@ export default function Question() {
             <img alt="Acima" id="desktop" src="/perguntas/cima.svg" />
           </Grid>
           <Grid container className={classes.gridImgdireita}>
-            <img alt="clube da preta" src="/perguntas/direita.svg" />
+            <img alt="clube da preta" src="/perguntas/direta.svg" />
           </Grid>
           <Grid container className={classes.gridImgesquerda}>
             <img alt="clube da preta" src="/perguntas/esquerda.svg" />
-            <img alt="clube da preta" src="/perguntas/esquerdaacima.svg" />
           </Grid>
         </Grid>
         <Container
