@@ -8,7 +8,7 @@ import BtnAnswer from "../../components/Questions/BtnAnswer";
 const useStyles = makeStyles((theme) => ({
   gridTitle: {
     textAlign: "center",
-    padding: "16px 0",
+    padding: "16px",
   },
   gridContainer: {
     height: "100%",

@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
       letterSpacing: 4,
     },
     [theme.breakpoints.up("md")]: {
-      fontSize: 34,
+      fontSize: 25,
       letterSpacing: 4,
     },
   },
