@@ -130,11 +130,9 @@ export default function Question() {
     history.push("/");
   };
   const showTemplate = () => {
-    console.log(nowQuestion % 3, 0);
-
     if (nowQuestion % 2 === 0) {
       return <TemplateDois />;
-    } else if (nowQuestion % 3 === 0) {
+    } else if (nowQuestion % 3 === 0 && nowQuestion % 3 !== 0) {
       return <TemplateTres />;
     } else {
       return <TemplateUm />;
@@ -143,7 +141,6 @@ export default function Question() {
 
   const getColorBack = () => {
     let cor = "#f27253";
-    console.log(nowQuestion, 0);
     if (nowQuestion % 2 === 0 && nowQuestion % 3 !== 0) {
       cor = "#DCBEC9";
     } else if (nowQuestion % 3 === 0) {
