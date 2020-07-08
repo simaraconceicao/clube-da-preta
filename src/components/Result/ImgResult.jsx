@@ -9,9 +9,9 @@ const useStyles = makeStyles((theme) => ({
       height: "100%",
     },
     [theme.breakpoints.up("lg")]: {
-      marginTop: "-104px",
+      marginTop: "-94px",
       "& img": {
-        width: "150%",
+        width: "110%",
         height: "150%",
       },
     },

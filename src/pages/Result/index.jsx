@@ -366,7 +366,7 @@ export default function Result() {
 
   return (
     <Fragment>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" style={{ overflow: "hidden" }}>
         <Helmet>
           {/* General tags */}
           <title>{title}</title>

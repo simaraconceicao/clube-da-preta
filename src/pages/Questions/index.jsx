@@ -10,8 +10,6 @@ import BtnSocialGroup from "../../components/BtnSocialGroup";
 import { QuestionsContext } from "../../contexts/Questions";
 import Helmet from "react-helmet";
 import QuestionsApp from "../../texts/texts.json";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { useTheme } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import TemplateUm from "./TemplateUm";
 import TemplateDois from "./TemplateDois";
@@ -56,14 +54,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Question() {
   const classes = useStyles();
-  let colorHeader = "#f27253";
-  const theme = useTheme();
+  //const theme = useTheme();
 
-  const matches = useMediaQuery(theme.breakpoints.up("lg"));
-
-  if (matches) {
-    colorHeader = "#fff";
-  }
+  //const matches = useMediaQuery(theme.breakpoints.up("lg"));
 
   const [questions, setQuestions] = useState([]);
   const [nowQuestion, setNowQuestion] = useState(1);
@@ -175,7 +168,7 @@ export default function Question() {
             className={classes.questions}
           >
             <Grid item xs={12} md={12} lg={12} style={{ position: "relative" }}>
-              <Header color={colorHeader} />
+              <Header color={getColorBack()} />
             </Grid>
             <Grid
               item
