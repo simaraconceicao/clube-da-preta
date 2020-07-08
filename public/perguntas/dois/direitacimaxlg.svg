@@ -13,7 +13,7 @@
    version="1.1"
    id="svg1908"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="esquerdabaixo.svg">
+   sodipodi:docname="direitacimaxlg.svg">
   <defs
      id="defs1902">
     <clipPath
@@ -35,15 +35,15 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.124359"
      inkscape:cx="160.32278"
-     inkscape:cy="212.12087"
+     inkscape:cy="390"
      inkscape:document-units="mm"
-     inkscape:current-layer="g1814"
+     inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1299"
-     inkscape:window-height="713"
-     inkscape:window-x="67"
-     inkscape:window-y="1107"
+     inkscape:window-width="1920"
+     inkscape:window-height="1052"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -68,14 +68,13 @@
      transform="translate(30.871596,-65.335377)">
     <g
        id="g1814"
-       transform="matrix(0,0.26458333,-0.26458333,0,48.323068,85.711354)"
+       transform="matrix(0,0.28160375,-0.26458333,0,53.500091,53.107942)"
        style="fill:#e6e6e6">
       <g
          id="g1812"
          clip-path="url(#a)"
          class="e"
-         style="fill:#e6e6e6"
-         transform="translate(260.59293,135.18813)">
+         style="fill:#e6e6e6">
         <g
            id="g1810"
            transform="translate(-255.088,-319.487)"

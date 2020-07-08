@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, Fragment, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import HeaderResult from "../../components/Result/HeaderResult";
 import { useHistory } from "react-router-dom";
 import Title from "../../components/Result/Title";
 import Info from "../../components/Result/Info";
@@ -72,22 +72,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-function getHeaderByResult(result) {
-  switch (result) {
-    case textsApp.casual.id:
-      return <HeaderResult img={textsApp.casual.imgHeader} />;
-    case textsApp.classico.id:
-      return <HeaderResult description={textsApp.classico.imgHeader} />;
-    case textsApp.esporte.id:
-      return <HeaderResult description={textsApp.esporte.imgHeader} />;
-    case textsApp.fashion.id:
-      return <HeaderResult description={textsApp.fashion.imgHeader} />;
-
-    default:
-      return <HeaderResult img={textsApp.basico.imgHeader} />;
-  }
-}
 
 export default function Result() {
   const classes = useStyles();
@@ -203,6 +187,7 @@ export default function Result() {
         break;
       case textsApp.classico.id:
         setTitle(textsApp.classico.title);
+        break;
       case textsApp.esporte.id:
         setTitle(textsApp.esporte.title);
         break;
@@ -301,21 +286,6 @@ export default function Result() {
         return textsApp.fashion.color;
       default:
         return textsApp.basico.color;
-    }
-  };
-
-  const getLogo = () => {
-    switch (result) {
-      case textsApp.casual.id:
-        return textsApp.casual.imgHeader;
-      case textsApp.classico.id:
-        return textsApp.classico.imgHeader;
-      case textsApp.esporte.id:
-        return textsApp.esporte.imgHeader;
-      case textsApp.fashion.id:
-        return textsApp.fashion.imgHeader;
-      default:
-        return textsApp.basico.imgHeader;
     }
   };
 

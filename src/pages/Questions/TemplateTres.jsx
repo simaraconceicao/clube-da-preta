@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
   gridImgCima: {
     position: "absolute",
     justifyContent: "center",
+    display: "none",
     "& img": {
       position: "absolute",
     },
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
         display: "none",
       },
       "& #tablet": {
-        display: "block",
+        display: "none",
       },
     },
     [theme.breakpoints.up("md")]: {
@@ -38,12 +39,8 @@ const useStyles = makeStyles((theme) => ({
         display: "none",
       },
       "& #desktop": {
-        display: "block",
+        display: "none",
       },
-    },
-
-    [theme.breakpoints.up("lg")]: {
-      //width: "100%",
     },
   },
   gridImgesquerda: {
@@ -64,17 +61,15 @@ const useStyles = makeStyles((theme) => ({
       position: "absolute",
     },
 
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("lg")]: {
       "& #esquerdamobile": {
         display: "none",
       },
       "& #esquerda": {
         display: "block",
-        top: 10,
       },
       "& #esquerdabaixo": {
-        display: "block",
-        bottom: 0,
+        display: "none",
       },
       "& #esquerdabaixomobile": {
         display: "none",
@@ -103,6 +98,9 @@ const useStyles = makeStyles((theme) => ({
     "& #diretamobile": {
       bottom: 0,
     },
+    "& #diretaxlg": {
+      display: "none",
+    },
     "& img": {
       position: "absolute",
     },
@@ -111,18 +109,9 @@ const useStyles = makeStyles((theme) => ({
       "& #direitacima": {
         display: "none",
       },
-      "& #direitacimamobile": {
-        display: "none",
-      },
-      "& #direta": {
-        display: "block",
-      },
 
-      "& #direitacimatablet": {
-        display: "block",
-      },
       "& #diretamobile": {
-        display: "none",
+        display: "flex",
       },
     },
     [theme.breakpoints.up("md")]: {
@@ -132,9 +121,7 @@ const useStyles = makeStyles((theme) => ({
       "& #diretamobile": {
         display: "none",
       },
-      "& #direitacima": {
-        display: "block",
-      },
+
       "& #direitacimatablet": {
         display: "none",
       },
@@ -143,75 +130,92 @@ const useStyles = makeStyles((theme) => ({
       "& #direitacima": {
         display: "block",
       },
-    },
-    [theme.breakpoints.up("xl")]: {
-      "& #direitacima": {
+
+      "& #direitacimamobile": {
         display: "none",
       },
+      "& #diretamobile": {
+        display: "none",
+      },
+    },
+    [theme.breakpoints.up("xl")]: {
+      "& #diretacima": {
+        display: "none !importante",
+      },
       "& #direitacimaxlg": {
-        display: "block",
+        display: "none",
+      },
+      "& #direta": {
+        display: "none",
+      },
+      "& #diretaxlg": {
+        display: "flex",
+        bottom: 0,
       },
     },
   },
 }));
 
-export default function TemplateUm() {
+export default function TemplateTres() {
   const classes = useStyles();
+
+  const rota = "/perguntas/tres/";
 
   return (
     <Fragment>
       <Grid container className={classes.containerImg}>
         <Grid container className={classes.gridImgCima}>
-          <img alt="Acima" id="mobile" src="/perguntas/cimamobile.svg" />
-          <img alt="Acima" id="desktop" src="/perguntas/cima.svg" />
-          <img alt="Acima" id="tablet" src="/perguntas/cimatablet.svg" />
+          <img alt="Acima mobile" id="mobile" src={`${rota}cimamobile.svg`} />
+          <img alt="Acima desktop" id="desktop" src={`${rota}cima.svg`} />
+          <img alt="Acima tablet" id="tablet" src={`${rota}cimatablet.svg`} />
         </Grid>
 
         <Grid container className={classes.gridImgdireita}>
-          <img alt="clube da preta" id="direta" src="/perguntas/direta.svg" />
+          <img alt="direita" id="direta" src={`${rota}direta.svg`} />
           <img
             alt="clube da preta"
             id="diretamobile"
-            src="/perguntas/diretamobile.svg"
+            src={`${rota}diretamobile.svg`}
           />
+          <img alt="direita" id="diretaxlg" src={`${rota}diretaxlg.svg`} />
         </Grid>
       </Grid>
       <Grid container className={classes.gridImgdireita}>
         <img
-          alt="clube da preta"
+          alt="direitacima"
           id="direitacima"
-          src="/perguntas/linhadireita.svg"
+          src={`${rota}linhadireita.svg`}
         />
         <img
-          alt="clube da preta"
+          alt="direitacimamobile -clube da preta"
           id="direitacimamobile"
-          src="/perguntas/direitacimamobile.svg"
+          src={`${rota}direitacimamobile.svg`}
         />
         <img
-          alt="clube da preta"
+          alt="direitacimatablet-clube da preta"
           id="direitacimatablet"
-          src="/perguntas/direitacimatablet.svg"
+          src={`${rota}direitacimatablet.svg`}
         />
         <img
-          alt="clube da preta"
+          alt="direitacimalg"
           id="direitacimaxlg"
-          src="/perguntas/direitacimaxlg.svg"
+          src={`${rota}direitacimaxlg.svg`}
         />
       </Grid>
 
       <Grid container className={classes.gridImgesquerda}>
-        <img alt="clube da preta" id="esquerda" src="/perguntas/esquerda.svg" />
+        <img alt="clube da preta" id="esquerda" src={`${rota}esquerda.svg`} />
       </Grid>
       <Grid container className={classes.gridImgesquerda}>
         <img
           alt="clube da preta"
           id="esquerdabaixo"
-          src="/perguntas/esquerdabaixo.svg"
+          src={`${rota}esquerdabaixo.svg`}
         />
         <img
           alt="clube da preta"
           id="esquerdabaixomobile"
-          src="/perguntas/esquerdabaixomobile.svg"
+          src={`${rota}esquerdabaixomobile.svg`}
         />
       </Grid>
     </Fragment>

@@ -15,6 +15,7 @@ import { useTheme } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import TemplateUm from "./TemplateUm";
 import TemplateDois from "./TemplateDois";
+import TemplateTres from "./TemplateTres";
 
 const useStyles = makeStyles((theme) => ({
   questions: {
@@ -129,25 +130,27 @@ export default function Question() {
     history.push("/");
   };
   const showTemplate = () => {
-    console.log(nowQuestion, 0);
-    switch (nowQuestion % 2 === 0) {
-      case true:
-        return <TemplateDois />;
+    console.log(nowQuestion % 3, 0);
 
-      default:
-        return <TemplateUm />;
+    if (nowQuestion % 2 === 0) {
+      return <TemplateDois />;
+    } else if (nowQuestion % 3 === 0) {
+      return <TemplateTres />;
+    } else {
+      return <TemplateUm />;
     }
   };
 
   const getColorBack = () => {
+    let cor = "#f27253";
     console.log(nowQuestion, 0);
-    switch (nowQuestion % 2 === 0) {
-      case true:
-        return "#DCBEC9";
-
-      default:
-        return "#f27253";
+    if (nowQuestion % 2 === 0 && nowQuestion % 3 !== 0) {
+      cor = "#DCBEC9";
+    } else if (nowQuestion % 3 === 0) {
+      cor = "#F3B4A1";
     }
+
+    return cor;
   };
 
   return (

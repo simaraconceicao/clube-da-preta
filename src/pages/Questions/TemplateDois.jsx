@@ -18,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
     "& #desktop": {
       display: "none",
     },
+    "& #desktopxlg": {
+      display: "none",
+    },
+
     "& #tablet": {
       display: "none",
     },
@@ -42,8 +46,14 @@ const useStyles = makeStyles((theme) => ({
       },
     },
 
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up("xl")]: {
       //width: "100%",
+      "& #desktop": {
+        display: "none",
+      },
+      "& #desktopxlg": {
+        display: "flex",
+      },
     },
   },
   gridImgesquerda: {
@@ -65,13 +75,18 @@ const useStyles = makeStyles((theme) => ({
     },
 
     [theme.breakpoints.up("sm")]: {
-      "& #esquerdamobile": {
+      "& #esquerdamobile": {},
+      "& #esquerda": {},
+      "& #esquerdabaixo": {
+        bottom: 0,
+      },
+      "& #esquerdabaixomobile": {
         display: "none",
       },
-      "& #esquerda": {
-        display: "block",
-        top: 10,
-      },
+    },
+    [theme.breakpoints.up("md")]: {
+      "& #esquerdamobile": {},
+      "& #esquerda": {},
       "& #esquerdabaixo": {
         display: "block",
         bottom: 0,
@@ -93,6 +108,9 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
     "& #direitacimaxlg": {
+      display: "none",
+    },
+    "& #diretaxlg": {
       display: "none",
     },
 
@@ -119,38 +137,44 @@ const useStyles = makeStyles((theme) => ({
       },
 
       "& #direitacimatablet": {
-        display: "block",
-      },
-      "& #diretamobile": {
         display: "none",
       },
+      "& #diretamobile": {},
     },
     [theme.breakpoints.up("md")]: {
       "& #direta": {
-        display: "block",
+        display: "none",
       },
       "& #diretamobile": {
         display: "none",
       },
-      "& #direitacima": {
-        display: "block",
-      },
+      "& #direitacima": {},
       "& #direitacimatablet": {
         display: "none",
       },
     },
     [theme.breakpoints.up("lg")]: {
       "& #direitacima": {
-        display: "block",
+        display: "flex",
+      },
+      "& #direta": {
+        display: "flex",
       },
     },
     [theme.breakpoints.up("xl")]: {
-      "& #diretacima": {
-        display: "none !importante",
-        top: "-897px",
-      },
       "& #direitacimaxlg": {
+        display: "flex",
+      },
+      "& img": {
+        bottom: 0,
+      },
+
+      "& #diretaxlg": {
         display: "block",
+      },
+
+      "& #direta": {
+        display: "none",
       },
     },
   },
@@ -168,6 +192,7 @@ export default function TemplateDois() {
           <img alt="Acima" id="mobile" src={`${rota}cimamobile.svg`} />
           <img alt="Acima" id="desktop" src={`${rota}cima.svg`} />
           <img alt="Acima" id="tablet" src={`${rota}cimatablet.svg`} />
+          <img alt="cimaxlg" id="desktopxlg" src={`${rota}cimaxlg.svg`} />
         </Grid>
 
         <Grid container className={classes.gridImgdireita}>
@@ -176,6 +201,11 @@ export default function TemplateDois() {
             alt="clube da preta"
             id="diretamobile"
             src={`${rota}diretamobile.svg`}
+          />
+          <img
+            alt="clube da preta"
+            id="diretaxlg"
+            src={`${rota}diretaxlg.svg`}
           />
         </Grid>
       </Grid>
