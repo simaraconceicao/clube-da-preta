@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (6e3e5246a0, 2020-05-07)"
+   sodipodi:docname="esquerda.svg"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 173.11016 550.32597"
+   height="550.32599"
+   width="173.11015">
+  <metadata
+     id="metadata12">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     fit-margin-bottom="0"
+     fit-margin-right="0"
+     fit-margin-left="0"
+     fit-margin-top="0"
+     inkscape:current-layer="svg8"
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="396.64309"
+     inkscape:cx="105.55507"
+     inkscape:zoom="1.8277935"
+     showgrid="false"
+     id="namedview10"
+     inkscape:window-height="1052"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.a{fill:#e16957;}</style>
+  </defs>
+  <path
+     id="path6"
+     d="m -91.044122,-67.295958 c 1.569,1.019 3.134,2.033 4.694,3.077 50.688,33.693 105.51,70.1999998 142.481005,119.543998 28.109997,37.5 43.075998,87.7 52.299997,132.725 2.885,14.091 3.588,27.784 4.718,42.019 1.684,21.21 5.847,41.9 6.646,63.219 a 269.723,269.723 0 0 1 -2.44,50.238 c -3.325,22.392 -9.818,43.861 -20.042999,66.817 -15.718001,35.229 -31.200001,67.032 -53.970003,98.276 q -3.072,4.2 -6.258,8.292 c -9.5,12.22 -19.713,23.727 -30.0999999,35.119 H -91.043122 Z"
+     class="a" />
+</svg>

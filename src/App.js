@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Container from "@material-ui/core/Container";
 import Home from "./pages/Home";
 import Questions from "./pages/Questions";
 import Result from "./pages/Result";
@@ -15,15 +14,13 @@ function App() {
     <FacebookProvider appId={`${config.ID_FACEBOOK_APP}`}>
       <QuestionsProvider>
         <CssBaseline />
-        <Container maxWidth="lg">
-          <Router>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/perguntas" component={Questions} />
-              <Route path="/resultado" component={Result} />
-            </Switch>
-          </Router>
-        </Container>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/perguntas" component={Questions} />
+            <Route path="/resultado" component={Result} />
+          </Switch>
+        </Router>
       </QuestionsProvider>
     </FacebookProvider>
   );

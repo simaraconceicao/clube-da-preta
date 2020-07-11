@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { createContext, useState } from "react";
 import textsApp from "../texts/texts.json";
-import { getDefaultCompilerOptions } from "typescript";
 const QuestionsContext = createContext();
 
 function QuestionsProvider({ children }) {

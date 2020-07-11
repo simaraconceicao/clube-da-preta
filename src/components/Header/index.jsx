@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header({ color }) {
+  console.log(color);
   const classes = useStyles();
 
   return (
@@ -37,8 +38,19 @@ export default function Header({ color }) {
       <Grid item>
         <span className={classes.titulo}>Quiz: Qual seu estilo?</span>
       </Grid>
-      <Grid item>
-        <img alt="logo" src="logocp.svg" />
+      <Grid item className={classes.logo}>
+        <img
+          alt="logo"
+          src="/logocp.svg"
+          style={{ display: color === "#f27253" ? "none" : "block" }}
+        />
+        <img
+          alt="logo"
+          src="/logoEsporteFino.svg"
+          width="120px"
+          height="50px"
+          style={{ display: color === "#f27253" ? "block" : "none" }}
+        />
       </Grid>
     </Grid>
   );

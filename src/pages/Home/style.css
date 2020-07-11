@@ -1,1 +1,16 @@
+/* *{
+    box-sizing: border-box;
+}
+@media (min-whidth:1024px){
+    .imgWoman {
+        width: 90%;
+        margin-left: 679px;
+        margin-top: 39px;
+    }
+    .imgMan {
+        width: 106%;   
+        margin-left: -681px;
+        margin-top: 41px;
+    }
 
+} */

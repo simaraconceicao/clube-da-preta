@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, Fragment, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import HeaderResult from "../../components/Result/HeaderResult";
 import { useHistory } from "react-router-dom";
 import Title from "../../components/Result/Title";
 import Info from "../../components/Result/Info";
@@ -72,22 +73,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-function getHeaderByResult(result) {
-  switch (result) {
-    case textsApp.casual.id:
-      return <HeaderResult img={textsApp.casual.imgHeader} />;
-    case textsApp.classico.id:
-      return <HeaderResult description={textsApp.classico.imgHeader} />;
-    case textsApp.esporte.id:
-      return <HeaderResult description={textsApp.esporte.imgHeader} />;
-    case textsApp.fashion.id:
-      return <HeaderResult description={textsApp.fashion.imgHeader} />;
-
-    default:
-      return <HeaderResult img={textsApp.basico.imgHeader} />;
-  }
-}
 
 export default function Result() {
   const classes = useStyles();
@@ -203,6 +188,7 @@ export default function Result() {
         break;
       case textsApp.classico.id:
         setTitle(textsApp.classico.title);
+        break;
       case textsApp.esporte.id:
         setTitle(textsApp.esporte.title);
         break;
@@ -304,21 +290,6 @@ export default function Result() {
     }
   };
 
-  const getLogo = () => {
-    switch (result) {
-      case textsApp.casual.id:
-        return textsApp.casual.imgHeader;
-      case textsApp.classico.id:
-        return textsApp.classico.imgHeader;
-      case textsApp.esporte.id:
-        return textsApp.esporte.imgHeader;
-      case textsApp.fashion.id:
-        return textsApp.fashion.imgHeader;
-      default:
-        return textsApp.basico.imgHeader;
-    }
-  };
-
   const getImgResult = (result) => {
     const genre = getGenre();
     switch (result) {
@@ -395,135 +366,143 @@ export default function Result() {
 
   return (
     <Fragment>
-      <Helmet>
-        {/* General tags */}
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        {/* OpenGraph tags */}
-        <meta name="og:url" content={urlShared} />
-        <meta name="og:title" content={title} />
-        <meta name="og:description" content={description} />
-        <meta name="og:image" content={imgShared} />
-        <meta name="og:type" content={type} />
-        <meta name="fb:app_id" content={facebookID} />
-        {/* Twitter Card tags */}
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={imgShared} />
-        <meta name="twitter:card" content="summary" />
-        <style>{`body { background-color: ${getBackgroundColor()} }`}</style>
-      </Helmet>
-
-      <Grid
-        container
-        direction="column"
-        alignItems="start"
-        className={classes.questions}
-        style={{ backgroundColor: getBackgroundColor(), color: getColor() }}
-      >
-        <Grid item className={classes.gridHeader}>
-          <Header />
-        </Grid>
+      <Container maxWidth="lg" style={{ overflow: "hidden" }}>
+        <Helmet>
+          {/* General tags */}
+          <title>{title}</title>
+          <meta name="description" content={description} />
+          {/* OpenGraph tags */}
+          <meta name="og:url" content={urlShared} />
+          <meta name="og:title" content={title} />
+          <meta name="og:description" content={description} />
+          <meta name="og:image" content={imgShared} />
+          <meta name="og:type" content={type} />
+          <meta name="fb:app_id" content={facebookID} />
+          {/* Twitter Card tags */}
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <meta name="twitter:image" content={imgShared} />
+          <meta name="twitter:card" content="summary" />
+          <style>{`body { background-color: ${getBackgroundColor()} }`}</style>
+        </Helmet>
 
         <Grid
           container
-          direction="row"
-          alignItems="flex-start"
-          className={classes.gridContainer}
+          direction="column"
+          alignItems="start"
+          className={classes.questions}
+          style={{ backgroundColor: getBackgroundColor(), color: getColor() }}
         >
-          <Grid container>
-            <Grid
-              container
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              lg={4}
-              className={classes.gridDescription}
-            >
-              <Grid item xs={12} sm={12}>
-                <Grid item xs={12} sm={12} className={classes.gridTitle}>
-                  {geTitleByResult(result)}
-                </Grid>
-                {getDescriptionByResult(result, getColor())}
-              </Grid>
-            </Grid>
-            <Grid
-              container
-              item
-              sm={6}
-              md={8}
-              lg={8}
-              className={classes.gridDescriptionLg}
-            >
-              <Grid
-                container
-                direction="column"
-                justify="center"
-                alignContent="center"
-                item
-                md={4}
-                xs={6}
-                sm={12}
-                lg={4}
-                className={classes.sharedLg}
-              >
-                <Shared stilo={stilo} description={description} />
-              </Grid>
-              <Grid
-                item
-                md={8}
-                xs={12}
-                sm={6}
-                lg={7}
-                style={{ textAlign: "center" }}
-                className={classes.gridImglg}
-              >
-                {!matches && getImgByResult(result)}
-              </Grid>
-            </Grid>
+          <Grid item className={classes.gridHeader}>
+            <Header />
           </Grid>
 
           <Grid
-            item
             container
-            xs={12}
             direction="row"
-            className={classes.gridStilo}
+            alignItems="flex-start"
+            className={classes.gridContainer}
           >
-            <strong>Conheça outros estilos</strong>
             <Grid container>
-              <Grid item xs={6} sm={6}>
-                {getStyleByResult(result)}
+              <Grid
+                container
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={4}
+                className={classes.gridDescription}
+              >
+                <Grid item xs={12} sm={12}>
+                  <Grid item xs={12} sm={12} className={classes.gridTitle}>
+                    {geTitleByResult(result)}
+                  </Grid>
+                  {getDescriptionByResult(result, getColor())}
+                </Grid>
               </Grid>
-              <Grid item xs={6} sm={6} container className={classes.gridShared}>
-                <Shared stilo={stilo} description={description} />
+              <Grid
+                container
+                item
+                sm={6}
+                md={8}
+                lg={8}
+                className={classes.gridDescriptionLg}
+              >
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignContent="center"
+                  item
+                  md={4}
+                  xs={6}
+                  sm={12}
+                  lg={4}
+                  className={classes.sharedLg}
+                >
+                  <Shared stilo={stilo} description={description} />
+                </Grid>
+                <Grid
+                  item
+                  md={8}
+                  xs={12}
+                  sm={6}
+                  lg={7}
+                  style={{ textAlign: "center" }}
+                  className={classes.gridImglg}
+                >
+                  {!matches && getImgByResult(result)}
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          {matches && (
+
             <Grid
               item
               container
               xs={12}
-              direction="column"
-              justify="center"
-              alignContent="center"
+              direction="row"
+              className={classes.gridStilo}
             >
-              {getImgByResult(result)}
+              <strong>Conheça outros estilos</strong>
+              <Grid container>
+                <Grid item xs={6} sm={6}>
+                  {getStyleByResult(result)}
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                  sm={6}
+                  container
+                  className={classes.gridShared}
+                >
+                  <Shared stilo={stilo} description={description} />
+                </Grid>
+              </Grid>
             </Grid>
-          )}
+            {matches && (
+              <Grid
+                item
+                container
+                xs={12}
+                direction="column"
+                justify="center"
+                alignContent="center"
+              >
+                {getImgByResult(result)}
+              </Grid>
+            )}
+          </Grid>
         </Grid>
-      </Grid>
-      <Grid
-        container
-        justify="space-between"
-        className={classes.footer}
-        style={{ color: getColor() }}
-      >
-        <strong onClick={gotToStart}>refazer o teste</strong>
-        <strong>ilustração by humaaans</strong>
-      </Grid>
+        <Grid
+          container
+          justify="space-between"
+          className={classes.footer}
+          style={{ color: getColor() }}
+        >
+          <strong onClick={gotToStart}>refazer o teste</strong>
+          <strong>ilustração by humaaans</strong>
+        </Grid>
+      </Container>
     </Fragment>
   );
 }

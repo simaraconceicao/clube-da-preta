@@ -4,11 +4,15 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   title: {
     color: "#fff",
-    fontSize: 24,
+    fontSize: 18,
     letterSpacing: 4,
     fontWeight: 900,
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sm")]: {
       fontSize: 34,
+      letterSpacing: 4,
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: 25,
       letterSpacing: 4,
     },
   },
